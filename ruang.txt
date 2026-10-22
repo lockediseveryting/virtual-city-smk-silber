@@ -1,0 +1,99 @@
+======================================================================
+         DAFTAR RUANGAN & FASILITAS KAMPUS SMK SILBER
+                    VIRTUAL CITY SMK SILBER
+======================================================================
+
+----------------------------------------------------------------------
+1. GEDUNG A (PUSAT ADMINISTRASI & KEJURUAN)
+----------------------------------------------------------------------
+Lantai 1:
+  - Kantor Guru                   : Ruang kerja guru dan pimpinan sekolah
+  - Ruang Tata Usaha (TU)         : Pusat layanan administrasi & surat-menyurat
+  - Ruang Praktik Siswa (RPS)     : Bengkel praktik kejuruan terpadu
+  - Ruang Seni & Studio DKV       : Studio multimedia, fotografi, & seni
+  - Ruang Organisasi IPM / OSIS   : Pusat kegiatan organisasi siswa
+  - Ruang Silber Industries       : Teaching Factory & laboratorium AI
+  - Ruang 3 (Kelas X TJKT 1)      : Ruang kelas teori
+
+Lantai 2:
+  - Ruang 1 (Kelas XII TJKT 1)    : Ruang kelas teori
+  - Ruang 2 (Kelas XII TJKT 2)    : Ruang kelas teori
+  - Lab. Rakitan Komputer         : Bengkel perakitan & hardware komputer
+
+----------------------------------------------------------------------
+2. GEDUNG B (PUSAT PEMBELAJARAN & TEKNOLOGI INFORMASI)
+----------------------------------------------------------------------
+Lantai 1:
+  - Ruang 4 (Kelas X TJKT 2)      : Ruang kelas teori
+  - Ruang 5 (Kelas X AKL 1)       : Ruang kelas teori
+  - Ruang 6 (Kelas X BD 1)        : Ruang kelas teori
+  - Ruang 7 (Kelas X BD 2)        : Ruang kelas teori
+  - Perpustakaan SMK Silber       : Koleksi buku digital & ruang literasi
+  - Bank Mini Silber              : Simulasi perbankan & loket teller AKL
+  - Mini Market Sekolah           : Laboratorium ritel, POS & kasir BD
+
+Lantai 2:
+  - Ruang 8 (Kelas XI TJKT 1)     : Ruang kelas teori
+  - Ruang 9 (Kelas XI DKV 1)      : Ruang kelas teori
+  - Lab. TIK 1 (Deret Bawah)      : Laboratorium komputer & jaringan dasar
+  - Lab. TIK 2 (Deret Atas)       : Laboratorium cyber security & server
+  - Ruang BK / BKK                : Bimbingan Konseling & Bursa Kerja Khusus
+
+----------------------------------------------------------------------
+3. GEDUNG C (AKADEMIK BARAT)
+----------------------------------------------------------------------
+Lantai 1:
+  - Ruang 10 (Kelas XI AKL 1)     : Ruang kelas teori
+  - Ruang 11 (Kelas XI BD 1)      : Ruang kelas teori
+
+Lantai 2:
+  - Ruang 12 (Kelas XII AKL 1)    : Ruang kelas teori
+  - Ruang 13 (Kelas XII DKV 1)    : Ruang kelas teori
+
+----------------------------------------------------------------------
+4. GEDUNG D (FASILITAS SERBAGUNA & IBADAH)
+----------------------------------------------------------------------
+Lantai 1:
+  - Hall Serbaguna Gedung D       : Aula pertemuan, stage panggung, & podium
+  - Musholah Sekolah              : Tempat ibadah, kubah hijau & area wudhu
+
+----------------------------------------------------------------------
+5. FASILITAS LUAR RUANGAN (OUTDOOR & OLAHRAGA)
+----------------------------------------------------------------------
+  - Gerbang Utama & Pos Keamanan  : Titik masuk utama & pos jaga security
+  - Lapangan Futsal               : Lapangan rumput sintetis & tiang gawang
+  - Kolam Renang Sekolah          : Fasilitas olahraga renang sisi barat
+  - Taman Tengah & Air Mancur     : Plaza ruang terbuka hijau & air mancur
+  - Kantin & Taman Terbuka        : Area santai, gazebo & tempat makan siswa
+  - Area F (Plaza Barat Daya)     : Area terbuka serbaguna & ekstrakurikuler
+  - Parkiran Mobil                : Area parkir kendaraan roda empat (Timur)
+  - Parkiran Motor Siswa          : Area parkir sepeda motor siswa (Timur)
+
+======================================================================
+REKAPITULASI 13 RUANG KELAS TEORI
+======================================================================
+Kode   | Nama Ruangan                | Gedung   | Lantai | Rombel
+-------+-----------------------------+----------+--------+------------
+R01    | Ruang 1                     | Gedung A | Lt. 2  | XII TJKT 1
+R02    | Ruang 2                     | Gedung A | Lt. 2  | XII TJKT 2
+R03    | Ruang 3                     | Gedung A | Lt. 1  | X TJKT 1
+R04    | Ruang 4                     | Gedung B | Lt. 1  | X TJKT 2
+R05    | Ruang 5                     | Gedung B | Lt. 1  | X AKL 1
+R06    | Ruang 6                     | Gedung B | Lt. 1  | X BD 1
+R07    | Ruang 7                     | Gedung B | Lt. 1  | X BD 2
+R08    | Ruang 8                     | Gedung B | Lt. 2  | XI TJKT 1
+R09    | Ruang 9                     | Gedung B | Lt. 2  | XI DKV 1
+R10    | Ruang 10                    | Gedung C | Lt. 1  | XI AKL 1
+R11    | Ruang 11                    | Gedung C | Lt. 1  | XI BD 1
+R12    | Ruang 12                    | Gedung C | Lt. 2  | XII AKL 1
+R13    | Ruang 13                    | Gedung C | Lt. 2  | XII DKV 1
+
+======================================================================
+TOTAL STATISTIK:
+  - 4 Gedung Utama (A, B, C, D)
+  - 13 Ruang Kelas Teori
+  - 6 Laboratorium & Bengkel Kejuruan
+  - 7 Fasilitas Layanan & Administrasi
+  - 8 Area Terbuka & Olahraga Outdoor
+  - Total: 38 Titik Lokasi Resmi Terintegrasi (2D, 3D, dan Pixel World)
+======================================================================

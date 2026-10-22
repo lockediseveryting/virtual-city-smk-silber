@@ -1,0 +1,13 @@
+# Media unggahan pemilik (latar login & musik): hanya berkas media, tanpa eksekusi skrip.
+Options -Indexes -ExecCGI
+<IfModule mod_php.c>
+  php_flag engine off
+</IfModule>
+RemoveHandler .php .phtml .php3 .php4 .php5 .phar
+<FilesMatch "^(?!m_[a-f0-9]{12}\.(mp4|webm|jpg|png|webp|gif|mp3|ogg|m4a|wav)$).+$">
+  Require all denied
+</FilesMatch>
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Cache-Control "public, max-age=604800"
+</IfModule>

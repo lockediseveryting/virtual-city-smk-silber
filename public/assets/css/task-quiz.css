@@ -1,0 +1,43 @@
+/* Tugas bentuk soal (task-quiz.js) */
+.tq-kind { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 6px; }
+.tq-kind label { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border: 2px solid #1f293d; border-radius: 8px; cursor: pointer; background: #0c111c; flex: 1; min-width: 200px; }
+.tq-kind label:has(input:checked) { border-color: #f59e0b; background: rgba(245,158,11,.12); }
+.tq-builder { margin-top: 10px; display: flex; flex-direction: column; gap: 10px; }
+.tq-builder[hidden] { display: none; }
+.tq-tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.tq-sum { margin-left: auto; color: #fbbf24; font-weight: 700; }
+.tq-card { border: 2px solid #1f293d; border-radius: 10px; padding: 10px; background: #0c111c; display: flex; flex-direction: column; gap: 8px; }
+.tq-card__head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.tq-card__head b { flex: 1; }
+.tq-card textarea, .tq-card input[type=text], .tq-card input[type=number] { background: #131a29; border: 1px solid #1f293d; color: #fff; border-radius: 6px; padding: 8px; font-size: 16px; width: 100%; box-sizing: border-box; }
+.tq-pts { display: flex; align-items: center; gap: 6px; font-size: .85rem; color: #94a3b8; }
+.tq-pts input { width: 72px !important; }
+.tq-x { background: none; border: 1px solid #334155; color: #cbd5e1; border-radius: 6px; padding: 4px 8px; cursor: pointer; }
+.tq-opts { display: grid; gap: 6px; }
+.tq-opt { display: flex; align-items: center; gap: 8px; padding: 4px 6px; border-radius: 6px; border: 1px solid transparent; }
+.tq-opt.is-ans { border-color: #10b981; background: rgba(16,185,129,.12); }
+.tq-opt input[type=radio] { width: 20px; height: 20px; flex: 0 0 auto; accent-color: #10b981; }
+.tq-mini { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: .82rem; color: #94a3b8; }
+.tq-link { background: none; border: 0; color: #22d3ee; cursor: pointer; padding: 0; font-size: .85rem; }
+.tq-key { border-style: dashed !important; }
+.tq-help { font-size: .82rem; color: #94a3b8; margin: 0; }
+.tq-badges { margin: 4px 0 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+.tq-take { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+.tq-q { border: 1px solid #1f293d; border-radius: 10px; padding: 12px; margin: 0; background: #0c111c; }
+.tq-q legend { padding: 0 6px; color: #fff; line-height: 1.5; }
+.tq-q legend small { color: #94a3b8; }
+.tq-choice { display: flex; gap: 8px; align-items: flex-start; padding: 10px; margin-top: 6px; border: 1px solid #1f293d; border-radius: 8px; cursor: pointer; min-height: 44px; box-sizing: border-box; }
+.tq-choice:has(input:checked) { border-color: #22d3ee; background: rgba(34,211,238,.1); }
+.tq-choice input { width: 20px; height: 20px; margin-top: 2px; flex: 0 0 auto; }
+.tq-q textarea { font-size: 16px; margin-top: 8px; }
+.tq-progress { color: #94a3b8; font-size: .85rem; margin: 0; }
+.tq-review { margin: 6px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.tq-review span { display: block; color: #e2e8f0; }
+.tq-review em { display: block; font-style: normal; color: #94a3b8; }
+.tq-review em.ok { color: #6ee7b7; } .tq-review em.no { color: #fca5a5; }
+.tq-grade summary { cursor: pointer; color: #22d3ee; font-size: .82rem; }
+.tq-grade ol { padding-left: 18px; margin: 6px 0; font-size: .8rem; display: flex; flex-direction: column; gap: 6px; }
+.tq-essay { display: block; background: #0c111c; padding: 6px; border-radius: 4px; color: #e2e8f0; }
+.tq-keytxt { display: block; color: #fbbf24; }
+.tq-ep { width: 80px !important; padding: 4px !important; display: inline-block; margin-left: 4px; }
+.tq-calc { font-size: .8rem; color: #fbbf24; margin: 4px 0 0; }

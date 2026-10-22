@@ -1,0 +1,315 @@
+/* =========================================================================
+   Virtual City SMK Silber — Mini-Games (Workstream C)
+   Tema: HD-2D gelap sinematik, pixel-crisp, bahasa Indonesia.
+   Dimuat otomatis oleh missions-minigame.js (idempotent).
+   ========================================================================= */
+
+.mg-overlay,
+.mg-overlay *,
+.mg-overlay *::before,
+.mg-overlay *::after,
+.mg-progress,
+.mg-progress * {
+  box-sizing: border-box;
+}
+
+/* Semua aset visual mini-game dirender pixel-crisp. */
+.mg-overlay img,
+.mg-overlay svg,
+.mg-overlay canvas,
+.mg-progress img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* ---------------------------------------------------------------- overlay */
+
+.mg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;                 /* di atas HUD dunia (world3d/pixel) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(6, 8, 18, 0.78);
+  backdrop-filter: blur(4px) saturate(1.15);
+  animation: mgFadeIn 0.22s ease both;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #e8ecf8;
+}
+.mg-overlay--out { animation: mgFadeOut 0.22s ease both; }
+
+@keyframes mgFadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes mgFadeOut { from { opacity: 1; } to { opacity: 0; } }
+
+.mg-panel {
+  width: min(680px, 96vw);
+  max-height: 92vh;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #141a2e 0%, #0c1020 100%);
+  border: 2px solid #2e3a5c;
+  border-radius: 10px;
+  box-shadow: 0 0 0 2px #0a0d18, 0 18px 60px rgba(0, 0, 0, 0.65),
+              0 0 42px rgba(64, 110, 255, 0.12) inset;
+  animation: mgPopIn 0.26s cubic-bezier(.2, 1.4, .4, 1) both;
+}
+@keyframes mgPopIn {
+  from { transform: translateY(18px) scale(0.96); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+
+/* ------------------------------------------------------------------ head */
+
+.mg-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: linear-gradient(90deg, rgba(64, 110, 255, 0.16), rgba(64, 110, 255, 0.02));
+  border-bottom: 2px solid #2e3a5c;
+}
+.mg-title { flex: 1; font-weight: 700; font-size: 15px; letter-spacing: 0.4px; text-shadow: 0 2px 0 #060913; }
+.mg-icon { color: #7fd1ff; }
+
+.mg-timer {
+  min-width: 62px;
+  text-align: center;
+  padding: 5px 10px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: #9fe8b0;
+  background: #10231a;
+  border: 2px solid #2c5a41;
+  border-radius: 6px;
+  box-shadow: 0 2px 0 #060913;
+}
+.mg-timer--warn { color: #ffd2a0; background: #2b1a10; border-color: #6b4526; animation: mgBlink 0.8s steps(2) infinite; }
+@keyframes mgBlink { 50% { filter: brightness(1.45); } }
+
+.mg-close {
+  width: 34px; height: 34px;
+  font-size: 15px;
+  color: #e8ecf8;
+  background: #1b2340;
+  border: 2px solid #3a4a78;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 0 #060913;
+}
+.mg-close:hover { background: #2a3560; }
+.mg-close:active { transform: translateY(2px); box-shadow: none; }
+
+/* ---------------------------------------------------------- instructions */
+
+.mg-instructions {
+  padding: 10px 14px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #b9c4e6;
+  background: rgba(10, 13, 24, 0.55);
+  border-bottom: 1px dashed #2e3a5c;
+}
+.mg-instructions b { color: #ffd98a; }
+.mg-quest {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  font-size: 11px;
+  color: #7fd1ff;
+  border: 1px solid #2e5a8c;
+  border-radius: 999px;
+}
+
+/* ------------------------------------------------------------------ board */
+
+.mg-board { padding: 18px 14px; min-height: 200px; }
+.mg-status { min-height: 20px; padding: 0 14px 10px; font-size: 13px; color: #9fb0dc; text-align: center; }
+.mg-spin {
+  display: inline-block; width: 12px; height: 12px; margin-right: 6px;
+  border: 2px solid #3a4a78; border-top-color: #7fd1ff; border-radius: 50%;
+  animation: mgSpin 0.7s linear infinite; vertical-align: -2px;
+}
+@keyframes mgSpin { to { transform: rotate(360deg); } }
+
+/* -------------------------------------------------------------- end panel */
+
+.mg-end { text-align: center; padding: 18px 8px; animation: mgPopIn 0.25s both; }
+.mg-end__title { font-size: 26px; font-weight: 800; letter-spacing: 2px; text-shadow: 0 3px 0 #060913; }
+.mg-end--ok   .mg-end__title { color: #7ef0a0; }
+.mg-end--fail .mg-end__title { color: #ff8a8a; }
+.mg-end__msg { margin: 10px 0 4px; color: #b9c4e6; font-size: 14px; }
+.mg-end__reward {
+  display: inline-block; margin-top: 8px; padding: 5px 14px;
+  color: #ffd98a; font-weight: 700;
+  background: #2b230f; border: 2px solid #6b5a26; border-radius: 6px;
+  box-shadow: 0 2px 0 #060913;
+}
+.mg-end__btns { margin-top: 16px; display: flex; gap: 10px; justify-content: center; }
+
+.mg-btn {
+  padding: 9px 22px;
+  font-size: 14px; font-weight: 700; color: #0c1020;
+  background: linear-gradient(180deg, #9fe8b0, #58c077);
+  border: 2px solid #2c5a41; border-radius: 6px;
+  cursor: pointer; box-shadow: 0 3px 0 #060913;
+  font-family: inherit;
+}
+.mg-btn--alt { background: linear-gradient(180deg, #9fb0dc, #5f74b0); border-color: #32406b; color: #0c1020; }
+.mg-btn--sm { padding: 6px 14px; font-size: 12.5px; box-shadow: 0 2px 0 #060913; }
+.mg-btn:hover { filter: brightness(1.08); }
+.mg-btn:active { transform: translateY(3px); box-shadow: none; }
+
+/* ============ GAME: WIRE — sambung kabel ================================ */
+
+.mg-wire { display: flex; align-items: stretch; gap: 0; justify-content: center; }
+.mg-wire__col { display: flex; flex-direction: column; gap: 14px; z-index: 1; }
+.mg-wire__node {
+  display: flex; align-items: center; justify-content: center;
+  width: 58px; height: 46px;
+  background: #1b2340; border: 2px solid #3a4a78; border-radius: 6px;
+  cursor: pointer; box-shadow: 0 3px 0 #060913;
+}
+.mg-wire__node[data-side="R"] .mg-wire__plug,
+.mg-wire__node[data-side="L"] .mg-wire__plug {
+  width: 26px; height: 14px;
+  background: var(--wc);
+  border: 2px solid #060913; border-radius: 3px;
+}
+.mg-wire__node:hover { background: #243056; }
+.mg-wire__node.is-sel { border-color: #ffd98a; box-shadow: 0 3px 0 #060913, 0 0 12px rgba(255, 217, 138, 0.55); }
+.mg-wire__node.is-done { opacity: 0.35; cursor: default; }
+.mg-wire__node.is-err { animation: mgShake 0.32s; border-color: #ff6b6b; }
+@keyframes mgShake { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+
+.mg-wire__svg { flex: 0 1 180px; min-width: 90px; overflow: visible; }
+.mg-wire__line { stroke-linecap: round; filter: drop-shadow(0 0 4px rgba(0,0,0,0.6)); animation: mgWireIn 0.3s ease both; }
+@keyframes mgWireIn { from { stroke-dasharray: 300; stroke-dashoffset: 300; } to { stroke-dashoffset: 0; } }
+
+/* ============ GAME: ASSEMBLE — rakit PC ================================= */
+
+.mg-asm { display: flex; flex-direction: column; gap: 16px; }
+.mg-asm__tray { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.mg-asm__part {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  min-width: 84px; padding: 8px 10px;
+  font-size: 12px; font-weight: 600; color: #e8ecf8;
+  background: #1b2340; border: 2px solid #3a4a78; border-radius: 6px;
+  cursor: grab; box-shadow: 0 3px 0 #060913; touch-action: none;
+  font-family: inherit;
+}
+.mg-asm__part:hover { background: #243056; }
+.mg-asm__part.is-sel { border-color: #ffd98a; box-shadow: 0 3px 0 #060913, 0 0 12px rgba(255, 217, 138, 0.5); }
+.mg-asm__part.is-used { opacity: 0.25; cursor: default; }
+.mg-asm__ico { font-size: 20px; line-height: 1; }
+.mg-asm__ghost {
+  position: fixed; z-index: 9100; pointer-events: none;
+  transform: translate(-50%, -50%) scale(1.06); opacity: 0.9;
+  box-shadow: 0 0 20px rgba(127, 209, 255, 0.5);
+}
+.mg-asm__slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.mg-asm__slot {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  min-height: 66px; padding: 8px 6px;
+  background: repeating-linear-gradient(45deg, #10162a, #10162a 8px, #0d1222 8px, #0d1222 16px);
+  border: 2px dashed #3a4a78; border-radius: 6px;
+  font-size: 11px; color: #7684ad;
+}
+.mg-asm__slot .mg-asm__num { font-size: 10px; font-weight: 800; color: #5b6ea8; }
+.mg-asm__slot .mg-asm__lbl { color: #7684ad; }
+.mg-asm__slot.is-filled { border-style: solid; border-color: #2c5a41; background: #10231a; color: #9fe8b0; animation: mgPopIn 0.2s both; }
+.mg-asm__slot.is-filled .mg-asm__ico { font-size: 18px; }
+.mg-asm__slot.is-err { animation: mgShake 0.32s; border-color: #ff6b6b; }
+@media (max-width: 560px) { .mg-asm__slots { grid-template-columns: repeat(2, 1fr); } }
+
+/* ============ GAME: CASH — rekap kas ==================================== */
+
+.mg-cash { text-align: center; }
+.mg-cash__target { font-size: 13px; color: #b9c4e6; }
+.mg-cash__target b { color: #ffd98a; }
+.mg-cash__total {
+  margin: 10px auto; padding: 8px 18px; width: fit-content;
+  font-size: 24px; font-weight: 800; font-variant-numeric: tabular-nums;
+  color: #9fb0dc; background: #10162a; border: 2px solid #3a4a78; border-radius: 6px;
+  box-shadow: 0 3px 0 #060913; text-shadow: 0 2px 0 #060913;
+}
+.mg-cash__total.is-ok   { color: #7ef0a0; border-color: #2c5a41; }
+.mg-cash__total.is-over { color: #ff8a8a; border-color: #6b2626; }
+.mg-cash__grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 14px; }
+.mg-cash__bill {
+  padding: 10px 12px; min-width: 92px;
+  font-size: 12.5px; font-weight: 700; color: #0c1020;
+  background: repeating-linear-gradient(90deg, #b8e6c4, #b8e6c4 10px, #a8dcb6 10px, #a8dcb6 20px);
+  border: 2px solid #2c5a41; border-radius: 4px;
+  cursor: pointer; box-shadow: 0 3px 0 #060913; font-family: inherit;
+}
+.mg-cash__bill:hover { filter: brightness(1.06); }
+.mg-cash__bill.is-pop { animation: mgPop 0.18s; }
+@keyframes mgPop { 50% { transform: translateY(-4px); } }
+
+/* ============ GAME: SORTBOOKS — susun buku ============================== */
+
+.mg-books { text-align: center; }
+.mg-books__order { font-size: 13px; color: #b9c4e6; margin-bottom: 12px; }
+.mg-books__order b { color: #7fd1ff; }
+.mg-books__shelf {
+  display: flex; align-items: flex-end; justify-content: center; gap: 5px;
+  padding: 10px 12px 0;
+  background: linear-gradient(180deg, #0d1222 0%, #0d1222 70%, #2b1f10 70%, #241a0c 100%);
+  border: 2px solid #3a4a78; border-bottom: none; border-radius: 6px 6px 0 0;
+  min-height: 140px;
+}
+.mg-books__book {
+  height: var(--bh, 100px);
+  min-width: 44px; padding: 6px 6px;
+  writing-mode: vertical-rl; text-orientation: mixed;
+  font-size: 12px; font-weight: 700; letter-spacing: 1px;
+  color: #0c1020; cursor: pointer;
+  border: 2px solid #060913; border-radius: 2px 2px 0 0;
+  box-shadow: 0 3px 0 #060913; font-family: inherit;
+}
+/* Variasi warna punggung buku berurutan (pixel-crisp block colors). */
+.mg-books__book:nth-child(6n+1) { background: #e0a35a; }
+.mg-books__book:nth-child(6n+2) { background: #7fb0e0; }
+.mg-books__book:nth-child(6n+3) { background: #9fd08a; }
+.mg-books__book:nth-child(6n+4) { background: #d98ac0; }
+.mg-books__book:nth-child(6n+5) { background: #e0d07f; }
+.mg-books__book:nth-child(6n+6) { background: #c88a7f; }
+.mg-books__book:hover { filter: brightness(1.12); }
+.mg-books__book.is-done { opacity: 0.18; cursor: default; }
+.mg-books__book.is-err { animation: mgShake 0.32s; outline: 2px solid #ff6b6b; }
+.mg-books__progress { margin-top: 12px; font-size: 13px; color: #ffd98a; }
+
+/* ============ Bar progres agregat server ================================ */
+
+.mg-progress { display: block; }
+.mg-progress__label { font-size: 12px; color: #b9c4e6; margin-bottom: 4px; font-family: 'Inter', system-ui, sans-serif; }
+.mg-progress__label b { color: #7ef0a0; }
+.mg-progress__track {
+  position: relative;
+  height: 18px;
+  background: #10162a;
+  border: 2px solid #3a4a78; border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 0 #060913;
+}
+.mg-progress__fill {
+  height: 100%;
+  background: repeating-linear-gradient(90deg, #58c077, #58c077 8px, #4aa866 8px, #4aa866 16px);
+  border-right: 2px solid #9fe8b0;
+  transition: width 0.6s cubic-bezier(.3, 1, .4, 1);
+}
+.mg-progress__pct {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10.5px; font-weight: 800; color: #e8ecf8;
+  text-shadow: 0 1px 0 #060913;
+}
+
+/* --------------------------------------------------------- aksesibilitas */
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-overlay, .mg-panel, .mg-wire__line, .mg-progress__fill { animation: none !important; transition: none !important; }
+}
+.mg-overlay button:focus-visible,
+.mg-progress button:focus-visible { outline: 2px solid #ffd98a; outline-offset: 2px; }

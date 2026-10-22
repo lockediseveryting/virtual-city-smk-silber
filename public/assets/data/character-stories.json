@@ -1,0 +1,204 @@
+{
+  "version": 2,
+  "kind": "character-stories",
+  "note": "Karakter = cerita (lore, dialog NPC) + desain penampilan saja. TIDAK ada tugas/storyArc: tugas diberikan guru/staf lewat misi server.",
+  "characters": [
+    {
+      "id": "char-tkj-rizky",
+      "name": "Rizky Pratama",
+      "jurusan": "Teknik Komputer & Jaringan (TKJ)",
+      "emoji": "🌐",
+      "color": "#22d3ee",
+      "lore": "Rizky adalah siswa TKJ kelas XI yang hafal alamat IP seluruh lab lebih cepat daripada hafal jadwal pelajarannya. Ia bercita-cita membangun jaringan sekolah tanpa kabel yang tertinggal. Konon satu-satunya orang yang tahu password router tua di Lab Rakitan.",
+      "spawnLocationId": "lab-rakitan",
+      "spriteKey": "tkj-cyber-cyan",
+      "uniqueDialogs": {
+        "npc-pak-teknisi": [
+          "Pak, kabel UTP di rakitan masih kurang dua meter nih.",
+          "Rizky! Kalau kamu sudah beresin topologi star itu, aku kasih kunci rack server.",
+          "Rahasia kecil: switch laci ketiga itu masih pakai firmware 2019. Jangan bilang siapa-siapa."
+        ],
+        "npc-bu-pustakawan": [
+          "Buku networking layer itu sudah saya kembalikan, Bu. Janji!",
+          "Kalau mau belajar subnetting lebih jauh, cari buku merah di rak nomor tujuh."
+        ],
+        "npc-pak-bk": [
+          "Konseling? Saya hanya kurang tidur karena ngoding, Pak."
+        ]
+      },
+      "design": {
+        "skin": "#e2ad84",
+        "hair": "#1c1917",
+        "hairStyle": "spiky",
+        "top": "#0e7490",
+        "bottom": "#1e293b",
+        "accent": "#22d3ee",
+        "shoes": "#111827"
+      }
+    },
+    {
+      "id": "char-rpl-aya",
+      "name": "Ayu Lestari",
+      "jurusan": "Rekayasa Perangkat Lunak (RPL)",
+      "emoji": "💻",
+      "color": "#a78bfa",
+      "lore": "Ayu menulis program pertamanya di kelas X dan sejak itu tidak pernah berhenti. Motto-nya: 'bug itu fitur yang belum selesai.' Ia sedang mengembangkan aplikasi absensi rahasia untuk keperluan proyek akhirnya.",
+      "spawnLocationId": "lab-tik-bawah",
+      "spriteKey": "rpl-programmer-violet",
+      "uniqueDialogs": {
+        "npc-bu-guru-rpl": [
+          "Bu, repository sudah saya push semalam, tinggal code review.",
+          "Ayu, aplikasi absensimu itu... sebenarnya sudah saya lihat. Bagus. Tapi ada satu bug di modul kelas 12.",
+          "Petunjuk: error log-nya hanya muncul kalau server jamnya tidak sinkron. Cek jam dinding Ruang TU."
+        ],
+        "npc-pak-tu": [
+          "Mbak, jangan begadang terus ya, absen jam 7 sering telat.",
+          "Jam dinding di sini memang maju 3 menit dari server. Sudah lama tidak disamakan."
+        ],
+        "npc-siswa-teller": [
+          "Kak Ayu, aplikasinya kapan jadi? Aku mau ikut uji coba!"
+        ]
+      },
+      "design": {
+        "skin": "#f1c7a0",
+        "hair": "#2b1d16",
+        "hairStyle": "long",
+        "top": "#6d28d9",
+        "bottom": "#312e81",
+        "accent": "#c4b5fd",
+        "shoes": "#1f2937"
+      }
+    },
+    {
+      "id": "char-dkv-bima",
+      "name": "Bima Saputra",
+      "jurusan": "Desain Komunikasi Visual (DKV)",
+      "emoji": "🎨",
+      "color": "#fb923c",
+      "lore": "Bima menggambar di mana saja: buku, meja, bahkan papan tulis sebelum guru masuk. Impiannya membuat mural identitas sekolah di Taman Tengah. Selalu membawa sketsa berisi konsep 'karya terbesar' yang belum pernah ia tunjukkan ke siapa pun.",
+      "spawnLocationId": "ruang-seni",
+      "spriteKey": "dkv-artist-orange",
+      "uniqueDialogs": {
+        "npc-bu-guru-dkv": [
+          "Bu, kelasnya warna catnya kurang satu tube magenta.",
+          "Bima, mural itu boleh, tapi harus melalui proposal ke OSIS dulu.",
+          "Kalau proposalmu ditolak, coba bawa mock-up 3D. Ketua OSis suka yang konkret."
+        ],
+        "npc-ketua-osis": [
+          "Proposal mural? Serahkan lewat rapat IPM ya.",
+          "Aku setuju, tapi butuh dukungan satu guru pembina. Coba Ruang BK, beliau paling mendukung karya siswa."
+        ],
+        "npc-pak-bk": [
+          "Bima, aku pernah lihat sketsamu itu. Jangan takut memamerkannya."
+        ]
+      },
+      "design": {
+        "skin": "#c98d63",
+        "hair": "#3b2416",
+        "hairStyle": "messy",
+        "top": "#c2410c",
+        "bottom": "#292524",
+        "accent": "#fdba74",
+        "shoes": "#44403c"
+      }
+    },
+    {
+      "id": "char-osis-nadia",
+      "name": "Nadia Kirana",
+      "jurusan": "Ketua OSIS / IPM",
+      "emoji": "🎖️",
+      "color": "#f472b6",
+      "lore": "Nadia terpilih sebagai ketua OSIS dengan program utama 'Sekolah Transparan': semua kegiatan dan anggaran bisa dilihat siswa. Tapi baru-baru ini laporan keuangan kgtiatan tertentu tidak cocok, dan hanya dia yang menyadarinya. Ia butuh bukti sebelum rapat besar.",
+      "spawnLocationId": "ruang-ipm",
+      "spriteKey": "osis-leader-pink",
+      "uniqueDialogs": {
+        "npc-pembina-osis": [
+          "Pak, laporan kgtiatan bulan lalu kok tidak ada tanda tangan bendahara?",
+          "Nadia, kamu cermat. Memang ada selisih 500 ribu. Cek mutasi di Bank Mini.",
+          "Petunjuk dari saya: selisih itu terjadi tepat setiap tanggal 25."
+        ],
+        "npc-teller-bank": [
+          "Selamat datang di Bank Mini! Cek mutasi? Silakan layar sebelah kiri.",
+          "Setiap tanggal 25 ada transfer keluar untuk 'seragam ekstra' — tapi pemasoknya tidak terdaftar."
+        ],
+        "npc-pak-tu": [
+          "Surat PO seragam ekstra itu... memang tidak lewat RUANG_TU. Aneh."
+        ]
+      },
+      "design": {
+        "skin": "#f0c29b",
+        "hair": "#be185d",
+        "hairStyle": "hijab",
+        "top": "#f1f5f9",
+        "bottom": "#1e3a8a",
+        "accent": "#f472b6",
+        "shoes": "#111827"
+      }
+    },
+    {
+      "id": "char-silber-fajar",
+      "name": "Fajar Ramadhan",
+      "jurusan": "Anggota Silber Industries (Teaching Factory)",
+      "emoji": "🛠️",
+      "color": "#4ade80",
+      "lore": "Fajar adalah anggota termuda unit Silber Industries, divisi perakitan perangkat untuk proyek mitra DUDI. Ia baru saja kehilangan purwarupa alat 'Smart Presence' satu-satunya sehari sebelum presentasi ke mitra. Waktu tinggal satu hari untuk merakit ulang dari nol.",
+      "spawnLocationId": "ruang-silber-industries",
+      "spriteKey": "silber-engineer-green",
+      "uniqueDialogs": {
+        "npc-mentor-industri": [
+          "Mas, purwarupanya hilang. Presentasi besok pagi!",
+          "Tenang, semua komponen cadangan ada di Ruang Praktik Siswa. Rakit ulang, kamu bisa.",
+          "Satu komponen kritis — modul sensor — terakhir terlihat di Lab Rakitan."
+        ],
+        "npc-pak-teknisi": [
+          "Sensor kehadiran itu? Ada satu di lemari komponen, tapi pinnya kembar semua. Asah logika penomoranmu."
+        ],
+        "npc-teller-bank": [
+          "Kalau butuh dana darurat unit, ajukan microloan siswa. Bunganya nol untuk proyek sekolah."
+        ]
+      },
+      "design": {
+        "skin": "#d39b72",
+        "hair": "#111111",
+        "hairStyle": "short",
+        "top": "#15803d",
+        "bottom": "#14532d",
+        "accent": "#facc15",
+        "shoes": "#1c1917"
+      }
+    },
+    {
+      "id": "char-baru-luna",
+      "name": "Luna Maharani",
+      "jurusan": "Siswa Baru (Belum Menentukan Jurusan)",
+      "emoji": "🎒",
+      "color": "#facc15",
+      "lore": "Luna baru pindahan minggu ini dan belum tahu harus ambil jurusan apa. Ia mendengar rumor bahwa di sekolah ini ada 'kelab rahasia pemandu' yang meninggalkan tanda berupa stiker bintang di lokasi-lokasi tertentu. Mengikuti jejak stiker itu menjadi cara kenal sekolahnya.",
+      "spawnLocationId": "gate-main",
+      "spriteKey": "newbie-yellow",
+      "uniqueDialogs": {
+        "npc-petugas-gerbang": [
+          "Selamat pagi! Selamat datang di SMK Silber. Ikuti misi orientasi dulu ya.",
+          "Kalau nemu stiker bintang, foto dan simpan. Kelab pemandu suka ninggalin jejak buat murid baru.",
+          "Stiker pertama biasanya nempel di dekat patung air mancur Taman Tengah."
+        ],
+        "npc-bu-pustakawan": [
+          "Murid baru? Buku panduan jurusan ada di rak depan. Tapi yang paling jujur: tanya langsung kakak kelas.",
+          "Stiker bintang di perpus artinya: 'di sinilah kamu menemukan jawaban'."
+        ],
+        "npc-siswa-teller": [
+          "Aku juga pernah ngikutin jejak stiker! Serius, itu cara terbaik kenal sekolah."
+        ]
+      },
+      "design": {
+        "skin": "#f3cba5",
+        "hair": "#3f2a1d",
+        "hairStyle": "ponytail",
+        "top": "#f8fafc",
+        "bottom": "#475569",
+        "accent": "#facc15",
+        "shoes": "#334155"
+      }
+    }
+  ]
+}

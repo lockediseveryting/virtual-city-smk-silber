@@ -1,0 +1,21 @@
+[Unit]
+Description=Virtual City SMK Silber — AI Orchestrator Worker (3 agents)
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www
+ExecStart=/usr/bin/php /var/www/private/bin/ai_worker.php --limit=2 --sleep=3
+Restart=always
+RestartSec=5
+
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

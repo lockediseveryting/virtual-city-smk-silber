@@ -1,0 +1,15 @@
+.git
+.env
+*.sqlite
+*.sqlite-*
+*.log
+private/data/*
+private/logs/*
+private/backups/*
+private/uploads/*
+assets
+arsip-dokumen
+docs
+*.md
+*.luau
+*.svg

@@ -1,0 +1,45 @@
+services:
+  web:
+    build: .
+    image: virtual-city-smk-silber:latest
+    container_name: virtual-city
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    ports:
+      - "${APP_PORT:-8080}:80"
+    volumes:
+      - vc-data:/var/www/private/data          # database SQLite + APP_KEY
+      - vc-logs:/var/www/private/logs
+      - vc-uploads:/var/www/private/uploads
+      - vc-media:/var/www/public/assets/media      # musik/video latar yang diunggah pemilik
+      - vc-avatars:/var/www/public/assets/avatars  # foto profil
+    # Pengerasan container
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETUID
+      - SETGID
+      - KILL
+      - NET_BIND_SERVICE
+    pids_limit: 512
+    mem_limit: 1g
+    cpus: 2
+    ulimits:
+      nofile: { soft: 8192, hard: 8192 }
+    logging:
+      driver: json-file
+      options: { max-size: "10m", max-file: "3" }
+
+volumes:
+  vc-data:
+  vc-logs:
+  vc-uploads:
+  vc-media:
+  vc-avatars:

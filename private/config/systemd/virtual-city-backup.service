@@ -1,0 +1,22 @@
+[Unit]
+# Backup otomatis: setiap ada berkas berubah di /var/www (tenang 90 dtk) + harian →
+# ZIP seluruh /var/www → dikirim ke Telegram owner (BACKUP_TELEGRAM_CHAT, bawaan 8021412878).
+Description=Virtual City SMK Silber — Backup otomatis ke Telegram
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# root: harus bisa membaca SELURUH /var/www (termasuk berkas milik root).
+User=root
+WorkingDirectory=/var/www
+ExecStart=/usr/bin/php /var/www/private/bin/telegram_backup.php --watch
+Restart=always
+RestartSec=30
+Nice=15
+IOSchedulingClass=idle
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

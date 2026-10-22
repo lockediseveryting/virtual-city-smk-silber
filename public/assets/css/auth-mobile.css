@@ -1,0 +1,744 @@
+/* ============================================================
+   auth-mobile.css — UI/UX auth mobile-first (login, register, 2FA)
+   Modern casual-game style: clean, natural, polished & responsive.
+   Design system 4 warna (WAJIB konsisten seluruh project):
+     HITAM   #0A0E17  (dasar)
+     BIRU    #1D4ED8 / #2563EB / #38BDF8 (link, fokus, aksen sekunder)
+     ORANYE  #F97316 / #F59E0B (CTA utama: Masuk / Daftar)
+     PUTIH   #FFFFFF  (teks utama, highlight, glow kartu)
+   ============================================================ */
+
+:root {
+  --au-black: #0b1326;
+  --au-black-card: rgba(16, 26, 48, 0.9);
+  --au-blue: #0284c7;
+  --au-blue-deep: #1d4ed8;
+  --au-blue-cyan: #38bdf8;
+  --au-blue-soft: #93c5fd;
+  --au-orange: #f97316;
+  --au-orange-bright: #ff6b00;
+  --au-amber: #f59e0b;
+  --au-white: #ffffff;
+  --au-border: rgba(56, 189, 248, 0.16);
+  --au-border-strong: rgba(56, 189, 248, 0.28);
+  --au-border-glow: rgba(249, 115, 22, 0.35);
+  --au-surface: rgba(16, 26, 48, 0.9);
+  --au-field: rgba(11, 19, 38, 0.95);
+  --au-text-muted: #94a3b8;
+  --au-text-faint: #64748b;
+  --au-radius: 24px;
+  --au-radius-sm: 14px;
+  color-scheme: dark;
+}
+
+/* ---------- Halaman: Background Mobile Game Aksen ---------- */
+.au-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(14px + env(safe-area-inset-top)) 16px calc(24px + env(safe-area-inset-bottom));
+  position: relative;
+  color: var(--au-white);
+  box-sizing: border-box;
+}
+
+/* Background layers: deep cyber night + ambient auras */
+.au-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle 520px at 15% 10%, rgba(2, 132, 199, 0.28), transparent 70%),
+    radial-gradient(circle 480px at 85% 85%, rgba(249, 115, 22, 0.22), transparent 65%),
+    linear-gradient(175deg, #0b1326 0%, #0f1a30 45%, #13223f 100%);
+}
+
+/* Subtle micro-grid texture */
+.au-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(circle at 50% 40%, black 40%, transparent 85%);
+  mask-image: radial-gradient(circle at 50% 40%, black 40%, transparent 85%);
+}
+
+/* ---------- Sticky Brand Header ---------- */
+.au-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 14px 10px;
+  margin-bottom: 8px;
+  background: rgba(10, 16, 28, 0.65);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--au-border);
+  border-radius: var(--au-radius-sm);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+.au-header__logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  object-fit: cover;
+  border: 1.5px solid rgba(56, 189, 248, 0.45);
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);
+}
+.au-header__name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--au-white);
+  line-height: 1.2;
+}
+.au-header__name small {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--au-blue-cyan);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.au-header__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--au-orange);
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.85);
+  animation: auDotGlow 2s ease-in-out infinite alternate;
+}
+@keyframes auDotGlow {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  100% { transform: scale(1.15); opacity: 1; }
+}
+
+/* ---------- Kartu Form Mobile Game Style ---------- */
+.au-card {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  background: var(--au-surface);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--au-border-strong);
+  border-radius: var(--au-radius);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 8px 32px rgba(2, 132, 199, 0.15);
+  padding: clamp(20px, 4.5vw, 28px);
+  color: var(--au-white);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+/* Garis rim highlight atas kartu */
+.au-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.75), transparent);
+}
+
+/* Mode Staf & ROOT: aura aksen cyber orange */
+.au-card.au-admin {
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(249, 115, 22, 0.2) inset,
+    0 8px 36px rgba(249, 115, 22, 0.22);
+}
+.au-card.au-admin::before {
+  background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.85), transparent);
+}
+
+.au-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.au-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 2px solid rgba(56, 189, 248, 0.5);
+  box-shadow:
+    0 0 0 3px rgba(2, 132, 199, 0.3),
+    0 8px 24px rgba(0, 0, 0, 0.5);
+  transition: transform 0.25s ease;
+}
+.au-card.au-admin .au-logo {
+  border-color: rgba(249, 115, 22, 0.6);
+  box-shadow:
+    0 0 0 3px rgba(249, 115, 22, 0.3),
+    0 8px 24px rgba(0, 0, 0, 0.5);
+}
+.au-title {
+  font-size: clamp(1.18rem, 3.8vw, 1.35rem);
+  font-weight: 800;
+  margin: 12px 0 4px;
+  color: var(--au-white);
+  letter-spacing: -0.01em;
+}
+.au-sub {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--au-text-muted);
+  line-height: 1.4;
+}
+
+/* ---------- Tab Portal (Segmented Switch Game Style) ---------- */
+.au-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  background: rgba(6, 10, 18, 0.9);
+  border: 1px solid var(--au-border);
+  border-radius: 16px;
+  padding: 4px;
+  margin-bottom: 16px;
+}
+.au-tab {
+  height: 44px;
+  min-height: 44px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--au-text-muted);
+  font-weight: 700;
+  font-size: 0.86rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transition: background 0.18s, color 0.18s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+.au-tab:hover {
+  color: var(--au-white);
+}
+.au-tab[aria-selected="true"] {
+  background: linear-gradient(135deg, var(--au-blue-deep) 0%, #2563eb 100%);
+  color: var(--au-white);
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.5);
+}
+.au-card.au-admin .au-tab[aria-selected="true"] {
+  background: linear-gradient(135deg, #ea580c 0%, var(--au-orange) 100%);
+  color: var(--au-white);
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.5);
+}
+.au-tab:active {
+  transform: scale(0.97);
+}
+.au-tab:focus-visible {
+  outline: 3px solid rgba(56, 189, 248, 0.6);
+  outline-offset: 1px;
+}
+
+/* ---------- Alert & Status Feedback ---------- */
+.au-alert {
+  display: none;
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  line-height: 1.4;
+  animation: auAlertIn 0.2s ease-out;
+}
+@keyframes auAlertIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.au-alert--info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(2, 132, 199, 0.16);
+  color: #7dd3fc;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+.au-alert--warn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(245, 158, 11, 0.16);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+.au-alert--err {
+  display: block;
+  background: rgba(239, 68, 68, 0.18);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.45);
+}
+.au-alert--ok {
+  display: block;
+  background: rgba(16, 185, 129, 0.18);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.45);
+}
+
+/* ---------- Form Fields (Ergonomis HP) ---------- */
+.au-field {
+  margin-bottom: 14px;
+}
+.au-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: var(--au-text-muted);
+  margin-bottom: 6px;
+}
+.au-label svg {
+  color: var(--au-blue-cyan);
+}
+.au-card.au-admin .au-label svg {
+  color: var(--au-amber);
+}
+.au-input {
+  width: 100%;
+  height: 48px;
+  min-height: 46px;
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--au-radius-sm);
+  padding: 0 14px;
+  font-size: 16px; /* Cegah auto-zoom iOS Safari */
+  color: var(--au-white);
+  background: var(--au-field);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+  appearance: none;
+}
+select.au-input {
+  background-image: none;
+}
+.au-input::placeholder {
+  color: var(--au-text-faint);
+}
+.au-input:focus {
+  border-color: var(--au-blue-cyan);
+  background: rgba(8, 14, 26, 0.96);
+  box-shadow:
+    0 0 0 3px rgba(56, 189, 248, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  outline: none;
+}
+.au-card.au-admin .au-input:focus {
+  border-color: var(--au-orange);
+  box-shadow:
+    0 0 0 3px rgba(249, 115, 22, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+.au-input:-webkit-autofill {
+  -webkit-text-fill-color: var(--au-white);
+  -webkit-box-shadow: 0 0 0 48px #080d17 inset;
+  caret-color: var(--au-white);
+}
+.au-passwrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.au-passwrap .au-input {
+  padding-right: 52px;
+}
+.au-eye {
+  position: absolute;
+  right: 4px;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  color: var(--au-text-muted);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+}
+.au-eye:hover {
+  background: rgba(56, 189, 248, 0.18);
+  color: var(--au-white);
+}
+.au-eye:focus-visible {
+  outline: 3px solid rgba(56, 189, 248, 0.6);
+  outline-offset: 1px;
+}
+.au-hint {
+  font-size: 0.75rem;
+  color: var(--au-text-faint);
+  margin-top: 5px;
+  line-height: 1.35;
+}
+
+/* ---------- Stepper Register ---------- */
+.au-steps {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.au-step {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--au-text-faint);
+  border: 1px solid var(--au-border);
+  background: rgba(6, 10, 18, 0.7);
+  transition: color 0.18s, border-color 0.18s, background 0.18s;
+}
+.au-step__num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--au-border-strong);
+}
+.au-step.is-active {
+  color: var(--au-white);
+  border-color: rgba(56, 189, 248, 0.55);
+  background: rgba(2, 132, 199, 0.2);
+}
+.au-step.is-active .au-step__num {
+  background: var(--au-blue-deep);
+  border-color: var(--au-blue-cyan);
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.5);
+  color: #fff;
+}
+.au-step.is-done {
+  color: var(--au-blue-soft);
+  border-color: rgba(249, 115, 22, 0.45);
+}
+.au-step.is-done .au-step__num {
+  background: var(--au-orange);
+  border-color: var(--au-amber);
+  color: #fff;
+}
+.au-step-sep {
+  width: 10px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--au-border-strong);
+  flex: 0 0 auto;
+}
+.au-stepbody {
+  display: none;
+}
+.au-stepbody.is-open {
+  display: block;
+}
+.au-stepnav {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+  margin-top: 4px;
+}
+.au-btn2 {
+  height: 48px;
+  min-height: 44px;
+  border: none;
+  border-radius: var(--au-radius-sm);
+  font-weight: 800;
+  font-size: 0.92rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.15s, box-shadow 0.15s, transform 0.08s;
+  -webkit-tap-highlight-color: transparent;
+}
+.au-btn2--ghost {
+  background: transparent;
+  border: 1.5px solid var(--au-border-strong);
+  color: var(--au-text-muted);
+}
+.au-btn2--ghost:hover {
+  color: var(--au-white);
+  border-color: rgba(56, 189, 248, 0.6);
+}
+.au-btn2--blue {
+  background: linear-gradient(135deg, var(--au-blue-deep) 0%, #2563eb 100%);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(29, 78, 216, 0.4);
+}
+.au-btn2--blue:hover {
+  filter: brightness(1.1);
+}
+.au-btn2:focus-visible {
+  outline: 3px solid rgba(56, 189, 248, 0.6);
+  outline-offset: 2px;
+}
+.au-btn2:active {
+  transform: scale(0.98);
+}
+
+/* ---------- Meter Kekuatan Sandi ---------- */
+.au-meter {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  margin-top: 8px;
+}
+.au-meter__bar {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: #ef4444;
+  transition: width 0.25s ease, background 0.25s ease;
+}
+.au-meter__label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  margin-top: 4px;
+  color: var(--au-text-faint);
+}
+
+/* ---------- CTA Utama (Game Hero Action Button) ---------- */
+.au-cta {
+  width: 100%;
+  height: 52px;
+  min-height: 48px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 16px;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--au-white);
+  background: linear-gradient(135deg, #ff6b00 0%, #ea580c 55%, #c2410c 100%);
+  box-shadow:
+    0 8px 24px rgba(249, 115, 22, 0.45),
+    0 1px 0 rgba(255, 255, 255, 0.25) inset;
+  transition: box-shadow 0.15s, transform 0.08s, filter 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.au-card.au-admin .au-cta {
+  background: linear-gradient(135deg, #ff6b00 0%, #ea580c 60%, #9a3412 100%);
+}
+.au-cta:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 10px 28px rgba(249, 115, 22, 0.55);
+}
+.au-cta:active {
+  transform: translateY(2px) scale(0.985);
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+}
+.au-cta:focus-visible {
+  outline: 3px solid rgba(56, 189, 248, 0.7);
+  outline-offset: 2px;
+}
+.au-cta[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  filter: none;
+}
+.au-cta--orange {
+  background: linear-gradient(135deg, var(--au-orange), var(--au-amber));
+}
+.au-spin {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: auRot 0.7s linear infinite;
+}
+@keyframes auRot {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Footer & Quick Links ---------- */
+.au-foot {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--au-border);
+  text-align: center;
+  font-size: 0.85rem;
+}
+.au-foot a {
+  color: var(--au-blue-cyan);
+  font-weight: 700;
+  text-decoration: none;
+}
+.au-foot a:hover,
+.au-foot a:focus-visible {
+  color: #bae6fd;
+  text-decoration: underline;
+}
+.au-foot a:focus-visible {
+  outline: 3px solid rgba(56, 189, 248, 0.6);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.au-links {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+}
+.au-links a {
+  color: var(--au-text-muted);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+.au-links a:hover {
+  color: var(--au-blue-cyan);
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.3);
+  text-decoration: none;
+}
+.au-copy {
+  margin: 14px auto 0;
+  font-size: 0.72rem;
+  color: var(--au-text-faint);
+  text-align: center;
+}
+
+/* ---------- 2FA: Kartu 6-Digit Besar ---------- */
+.au-otp {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 6px 0 16px;
+}
+.au-otp__digit {
+  width: 48px;
+  height: 60px;
+  flex: 0 1 48px;
+  border: 2px solid var(--au-border-strong);
+  border-radius: 14px;
+  background: rgba(6, 10, 18, 0.9);
+  color: var(--au-white);
+  font-size: 1.65rem;
+  font-weight: 800;
+  text-align: center;
+  caret-color: var(--au-orange);
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+.au-otp__digit:focus {
+  border-color: var(--au-orange);
+  background: rgba(12, 18, 30, 0.95);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.35);
+  outline: none;
+}
+.au-center {
+  text-align: center;
+  margin-bottom: 14px;
+}
+.au-back {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--au-text-muted);
+  font-size: 0.82rem;
+  text-decoration: none;
+}
+.au-back:hover {
+  color: var(--au-blue-cyan);
+}
+
+/* ---------- Responsive & Accessibility (Layar HP < 480px) ---------- */
+@media (max-width: 480px) {
+  .au-page {
+    padding: calc(8px + env(safe-area-inset-top)) 12px calc(18px + env(safe-area-inset-bottom));
+  }
+  .au-card {
+    border-radius: 20px;
+    padding: 20px 16px;
+    max-width: 100%;
+  }
+  .au-otp {
+    gap: 6px;
+  }
+  .au-otp__digit {
+    width: 44px;
+    height: 56px;
+    font-size: 1.45rem;
+    flex-basis: 44px;
+  }
+  .au-tab {
+    font-size: 0.82rem;
+  }
+  .au-links {
+    gap: 8px;
+  }
+  .au-links a {
+    font-size: 0.75rem;
+    padding: 4px 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .au-cta,
+  .au-tab,
+  .au-input,
+  .au-eye,
+  .au-meter__bar,
+  .au-btn2,
+  .au-otp__digit,
+  .au-header__dot {
+    transition: none;
+    animation: none;
+  }
+  .au-spin {
+    animation-duration: 1.6s;
+  }
+}

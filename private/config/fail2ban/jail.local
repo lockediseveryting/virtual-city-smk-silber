@@ -1,0 +1,23 @@
+# Fail2ban jail konfigurasi untuk Virtual City SMK Silber v5
+
+[virtual-city-auth]
+enabled  = true
+port     = http,https
+filter   = filter-virtual-city
+logpath  = /var/www/private/logs/security.log
+maxretry = 5
+findtime = 600
+bantime  = 3600
+banaction = iptables-multiport
+
+# Eskalasi hukuman bagi penyerang berulang
+[virtual-city-honeypot]
+enabled  = true
+port     = http,https
+filter   = filter-virtual-city
+logpath  = /var/www/private/logs/security.log
+failregex = ^\S+ event=honeypot_trap ip=<HOST>
+maxretry = 1
+findtime = 3600
+bantime  = 86400
+banaction = iptables-multiport

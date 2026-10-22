@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="silverArmor" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="50%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde047"/>
+      <stop offset="50%" stop-color="#eab308"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+    <linearGradient id="visorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="screenCyan" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="shadowFilter" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Shadow below mascot -->
+  <ellipse cx="200" cy="365" rx="100" ry="20" fill="#000000" opacity="0.45" filter="url(#shadowFilter)"/>
+
+  <!-- Propulsor Jets / Floating Aura -->
+  <g id="jets" opacity="0.85">
+    <ellipse cx="140" cy="335" rx="22" ry="10" fill="#22d3ee" filter="url(#neonGlow)"/>
+    <ellipse cx="260" cy="335" rx="22" ry="10" fill="#22d3ee" filter="url(#neonGlow)"/>
+    <ellipse cx="140" cy="338" rx="10" ry="5" fill="#f8fafc"/>
+    <ellipse cx="260" cy="338" rx="10" ry="5" fill="#f8fafc"/>
+  </g>
+
+  <!-- Mascot Body Group with Hover Floating -->
+  <g id="mascotBody">
+    <!-- Robotic Torso / Coat -->
+    <path d="M 120 230 C 120 200, 280 200, 280 230 L 295 320 C 295 335, 260 340, 200 340 C 140 340, 105 335, 105 320 Z" fill="url(#silverArmor)" stroke="#475569" stroke-width="3"/>
+    <!-- Cyber Tie / Core Badge -->
+    <polygon points="200,240 216,270 208,310 200,320 192,310 184,270" fill="url(#goldAccent)" stroke="#ca8a04" stroke-width="2" filter="url(#neonGlow)"/>
+    <!-- Collar -->
+    <polygon points="160,225 200,250 175,225" fill="#e2e8f0"/>
+    <polygon points="240,225 200,250 225,225" fill="#e2e8f0"/>
+
+    <!-- Left Arm / Hand (Floating) -->
+    <g id="leftArm">
+      <path d="M 115 240 Q 80 260 85 295 Q 95 315 110 300" fill="none" stroke="url(#silverArmor)" stroke-width="20" stroke-linecap="round"/>
+      <circle cx="85" cy="295" r="14" fill="url(#bodyGrad)"/>
+      <circle cx="85" cy="295" r="7" fill="#22d3ee" filter="url(#neonGlow)"/>
+    </g>
+
+    <!-- Right Arm / Waving Hand -->
+    <g id="rightArm">
+      <path d="M 285 240 Q 320 220 325 185 Q 315 170 300 180" fill="none" stroke="url(#silverArmor)" stroke-width="20" stroke-linecap="round"/>
+      <circle cx="325" cy="180" r="15" fill="url(#bodyGrad)"/>
+      <circle cx="325" cy="180" r="8" fill="#22d3ee" filter="url(#neonGlow)"/>
+      <!-- Wave Sparkles -->
+      <path d="M 345 160 L 350 170 L 360 175 L 350 180 L 345 190 L 340 180 L 330 175 L 340 170 Z" fill="url(#goldAccent)" filter="url(#neonGlow)"/>
+    </g>
+
+    <!-- Head / Helmet -->
+    <rect x="100" y="80" width="200" height="150" rx="60" fill="url(#silverArmor)" stroke="#38bdf8" stroke-width="4"/>
+    
+    <!-- Cat/Robot Cyber Ears -->
+    <!-- Left Ear -->
+    <polygon points="120,90 90,30 150,65" fill="url(#bodyGrad)" stroke="#38bdf8" stroke-width="3"/>
+    <polygon points="115,80 98,45 138,68" fill="#22d3ee" opacity="0.8" filter="url(#neonGlow)"/>
+    <!-- Right Ear -->
+    <polygon points="280,90 310,30 250,65" fill="url(#bodyGrad)" stroke="#38bdf8" stroke-width="3"/>
+    <polygon points="285,80 302,45 262,68" fill="#22d3ee" opacity="0.8" filter="url(#neonGlow)"/>
+
+    <!-- Antenna in Center -->
+    <line x1="200" y1="80" x2="200" y2="40" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="200" cy="35" r="10" fill="url(#goldAccent)" filter="url(#neonGlow)"/>
+
+    <!-- High-Tech Visor Screen -->
+    <rect x="120" y="105" width="160" height="95" rx="35" fill="url(#visorGrad)" stroke="#1e293b" stroke-width="3"/>
+    <rect x="124" y="109" width="152" height="87" rx="31" fill="#030712" opacity="0.95"/>
+
+    <!-- Expressive Digital Glowing Eyes (^ _ ^ gaming face) -->
+    <!-- Left Eye -->
+    <path d="M 148 152 Q 165 130 182 152" fill="none" stroke="#22d3ee" stroke-width="9" stroke-linecap="round" filter="url(#neonGlow)"/>
+    <circle cx="150" cy="165" r="4" fill="#f43f5e" opacity="0.8"/> <!-- Blush -->
+
+    <!-- Right Eye -->
+    <path d="M 218 152 Q 235 130 252 152" fill="none" stroke="#22d3ee" stroke-width="9" stroke-linecap="round" filter="url(#neonGlow)"/>
+    <circle cx="250" cy="165" r="4" fill="#f43f5e" opacity="0.8"/> <!-- Blush -->
+
+    <!-- Cute Smiling Mouth -->
+    <path d="M 193 166 Q 200 174 207 166" fill="none" stroke="#38bdf8" stroke-width="5" stroke-linecap="round" filter="url(#neonGlow)"/>
+
+    <!-- Visor Scanlines effect -->
+    <line x1="130" y1="125" x2="270" y2="125" stroke="#22d3ee" stroke-width="1" opacity="0.25"/>
+    <line x1="130" y1="145" x2="270" y2="145" stroke="#22d3ee" stroke-width="1" opacity="0.25"/>
+    <line x1="130" y1="165" x2="270" y2="165" stroke="#22d3ee" stroke-width="1" opacity="0.25"/>
+    <line x1="130" y1="185" x2="270" y2="185" stroke="#22d3ee" stroke-width="1" opacity="0.25"/>
+
+    <!-- School Headband / Graduation Star Ribbon -->
+    <path d="M 115 105 Q 200 95 285 105" fill="none" stroke="url(#goldAccent)" stroke-width="7" filter="url(#neonGlow)"/>
+    <circle cx="200" cy="100" r="9" fill="url(#goldAccent)"/>
+    <text x="200" y="104" font-family="system-ui, sans-serif" font-weight="900" font-size="11" fill="#000" text-anchor="middle">S</text>
+  </g>
+</svg>

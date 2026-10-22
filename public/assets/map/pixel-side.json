@@ -1,0 +1,896 @@
+{
+ "version": 1,
+ "kind": "pixel-side-world",
+ "source": "/var/www/ruang.txt (denah resmi: gedung, lantai, ruangan) + /assets/map/campus.json (koordinat resmi x/z untuk urutan barat→timur & peta navigasi)",
+ "layoutNote": "Dunia side-view: sumbu horizontal = urutan barat→timur menurut koordinat x campus.json. Jarak antar-zona adalah ESTIMASI yang disesuaikan lebar fasad (bukan skala resmi); koordinat resmi tiap lokasi disimpan di field \"campus\" dan dipakai peta navigasi. Gedung yang berdekatan di sumbu x (A x=0 selatan, B x=4 utara) ditempatkan bersebelahan A lalu B.",
+ "discrepancies": [
+  "ruang.txt: Perpustakaan, Bank Mini, Mini Market berada di Gedung B lantai 1; data 3D lama memiliki gedung terpisah (perpus, bank-mini, mini-market). Dunia pixel mengikuti ruang.txt; Mini Market diberi pintu toko langsung dari jalan pada fasad Gedung B.",
+  "ruang.txt: Ruang Praktik Siswa (RPS) di Gedung A lantai 1; data 3D lama memiliki bangunan RPS terpisah (x=-100). Dunia pixel mengikuti ruang.txt.",
+  "campus.json menamai LAB_TIK_1 \"Lab. TIK 2 (Deret Bawah, Lantai 2)\" — diperbaiki menjadi \"Lab. TIK 1 (Deret Bawah)\" sesuai ruang.txt.",
+  "ruang.txt menyebut total 38 titik, sedangkan daftarnya 36 baris: \"Gerbang Utama & Pos Keamanan\" dan \"Kantin & Taman Terbuka\" masing-masing dipisah menjadi 2 titik → 38.",
+  "Hall Serbaguna tidak punya ID ruangan sendiri di campus.json → kunjungan dicatat ke building:gedung-d. Pos Keamanan → building:gate-main, Taman Terbuka → room:KANTIN.",
+  "Lab Jaringan (lab-jaringan) ada di campus.json tetapi tidak tercantum di ruang.txt → tidak ditampilkan di dunia pixel."
+ ],
+ "world": {
+  "width": 4520,
+  "walls": [
+   24,
+   4496
+  ],
+  "spawn": {
+   "x": 4440,
+   "facing": -1
+  },
+  "zones": [
+   {
+    "id": "gedung-d",
+    "type": "building",
+    "name": "GEDUNG D",
+    "sub": "SERBAGUNA & IBADAH",
+    "x": 80,
+    "w": 340,
+    "floors": 1,
+    "door": 250,
+    "style": "hall",
+    "campus": {
+     "x": -174.0,
+     "z": -20.0
+    }
+   },
+   {
+    "id": "kolam-renang",
+    "type": "pool",
+    "x": 460,
+    "w": 240,
+    "loc": "kolam-renang"
+   },
+   {
+    "id": "area-f",
+    "type": "plaza",
+    "x": 740,
+    "w": 180,
+    "loc": "area-f"
+   },
+   {
+    "id": "gedung-c",
+    "type": "building",
+    "name": "GEDUNG C",
+    "sub": "AKADEMIK BARAT",
+    "x": 960,
+    "w": 340,
+    "floors": 2,
+    "door": 1130,
+    "style": "c",
+    "campus": {
+     "x": -130.0,
+     "z": -32.0
+    }
+   },
+   {
+    "id": "kantin",
+    "type": "kiosk",
+    "x": 1340,
+    "w": 200,
+    "door": 1440,
+    "loc": "kantin",
+    "name": "KANTIN"
+   },
+   {
+    "id": "taman-terbuka",
+    "type": "gazebo",
+    "x": 1560,
+    "w": 150,
+    "loc": "taman-terbuka"
+   },
+   {
+    "id": "taman-tengah",
+    "type": "fountain",
+    "x": 1740,
+    "w": 220,
+    "loc": "taman-tengah"
+   },
+   {
+    "id": "gedung-a",
+    "type": "building",
+    "name": "GEDUNG A",
+    "sub": "ADMINISTRASI & KEJURUAN",
+    "x": 2000,
+    "w": 600,
+    "floors": 2,
+    "door": 2300,
+    "style": "a",
+    "campus": {
+     "x": 0.0,
+     "z": 62.0
+    }
+   },
+   {
+    "id": "gedung-b",
+    "type": "building",
+    "name": "GEDUNG B",
+    "sub": "PEMBELAJARAN & TI",
+    "x": 2640,
+    "w": 700,
+    "floors": 2,
+    "door": 2900,
+    "style": "b",
+    "shopDoor": 3255,
+    "campus": {
+     "x": 4.0,
+     "z": -24.0
+    }
+   },
+   {
+    "id": "lap-futsal",
+    "type": "futsal",
+    "x": 3380,
+    "w": 320,
+    "loc": "lap-futsal"
+   },
+   {
+    "id": "parkir-motor",
+    "type": "motor",
+    "x": 3740,
+    "w": 160,
+    "loc": "parkir-motor"
+   },
+   {
+    "id": "parkir-mobil",
+    "type": "car",
+    "x": 3920,
+    "w": 220,
+    "loc": "parkir-mobil"
+   },
+   {
+    "id": "pos-keamanan",
+    "type": "booth",
+    "x": 4180,
+    "w": 100,
+    "door": 4230,
+    "loc": "pos-keamanan",
+    "name": "POS SATPAM"
+   },
+   {
+    "id": "gerbang-utama",
+    "type": "gate",
+    "x": 4300,
+    "w": 120,
+    "loc": "gerbang-utama"
+   }
+  ]
+ },
+ "buildings": {
+  "A": {
+   "zone": "gedung-a",
+   "name": "Gedung A",
+   "floors": {
+    "1": [
+     "ruang-praktik",
+     "ruang-ipm",
+     "ruang-tu",
+     "ruang-seni",
+     "kantor",
+     "ruang-silber-industries",
+     "ruang-3"
+    ],
+    "2": [
+     "ruang-1",
+     "ruang-2",
+     "lab-rakitan"
+    ]
+   }
+  },
+  "B": {
+   "zone": "gedung-b",
+   "name": "Gedung B",
+   "floors": {
+    "1": [
+     "ruang-4",
+     "ruang-5",
+     "ruang-6",
+     "perpus",
+     "ruang-7",
+     "bank-mini",
+     "mini-market"
+    ],
+    "2": [
+     "ruang-8",
+     "ruang-9",
+     "lab-tik-atas",
+     "lab-tik-bawah",
+     "ruang-bk-bkk"
+    ]
+   }
+  },
+  "C": {
+   "zone": "gedung-c",
+   "name": "Gedung C",
+   "floors": {
+    "1": [
+     "ruang-10",
+     "ruang-11"
+    ],
+    "2": [
+     "ruang-12",
+     "ruang-13"
+    ]
+   }
+  },
+  "D": {
+   "zone": "gedung-d",
+   "name": "Gedung D",
+   "floors": {
+    "1": [
+     "hall-serbaguna",
+     "musholah"
+    ]
+   }
+  }
+ },
+ "locations": [
+  {
+   "id": "kantor",
+   "name": "Kantor Guru",
+   "category": "layanan",
+   "building": "A",
+   "floor": 1,
+   "campusRef": "room:KANTOR",
+   "interior": "office",
+   "kind": "room",
+   "description": "Ruang kerja guru dan pimpinan sekolah",
+   "missionIds": [
+    "mission-layanan"
+   ],
+   "campus": {
+    "x": 10.0,
+    "z": 62.0
+   }
+  },
+  {
+   "id": "ruang-tu",
+   "name": "Ruang Tata Usaha (TU)",
+   "category": "layanan",
+   "building": "A",
+   "floor": 1,
+   "campusRef": "room:RUANG_TU",
+   "interior": "tu",
+   "kind": "room",
+   "description": "Pusat layanan administrasi & surat-menyurat",
+   "missionIds": [
+    "mission-layanan"
+   ],
+   "campus": {
+    "x": -10.0,
+    "z": 62.0
+   }
+  },
+  {
+   "id": "ruang-praktik",
+   "name": "Ruang Praktik Siswa (RPS)",
+   "category": "belajar",
+   "building": "A",
+   "floor": 1,
+   "campusRef": "room:RUANG_PRAKTIK",
+   "interior": "workshop",
+   "kind": "room",
+   "description": "Bengkel praktik kejuruan terpadu",
+   "missionIds": [],
+   "campus": {
+    "x": -100.0,
+    "z": 50.0
+   }
+  },
+  {
+   "id": "ruang-seni",
+   "name": "Ruang Seni & Studio DKV",
+   "category": "belajar",
+   "building": "A",
+   "floor": 1,
+   "campusRef": "room:RUANG_SENI",
+   "interior": "studio",
+   "kind": "room",
+   "description": "Studio multimedia, fotografi, & seni",
+   "missionIds": [
+    "mission-kreatif"
+   ],
+   "campus": {
+    "x": 0.0,
+    "z": 70.0
+   }
+  },
+  {
+   "id": "ruang-ipm",
+   "name": "Ruang Organisasi IPM / OSIS",
+   "category": "layanan",
+   "building": "A",
+   "floor": 1,
+   "campusRef": "room:RUANG_IPM",
+   "interior": "org",
+   "kind": "room",
+   "description": "Pusat kegiatan organisasi siswa",
+   "missionIds": [
+    "mission-organisasi"
+   ],
+   "campus": {
+    "x": -20.0,
+    "z": 70.0
+   }
+  },
+  {
+   "id": "ruang-silber-industries",
+   "name": "Ruang Silber Industries",
+   "category": "belajar",
+   "building": "A",
+   "floor": 1,
+   "campusRef": "room:RUANG_INDUSTRI",
+   "interior": "industry",
+   "kind": "room",
+   "description": "Teaching Factory & laboratorium AI",
+   "missionIds": [
+    "mission-industri"
+   ],
+   "campus": {
+    "x": 20.0,
+    "z": 70.0
+   }
+  },
+  {
+   "id": "ruang-3",
+   "name": "Ruang 3 (Kelas X TJKT 1)",
+   "category": "belajar",
+   "building": "A",
+   "floor": 1,
+   "campusRef": "room:R03",
+   "interior": "classroom",
+   "kind": "room",
+   "description": "Ruang kelas teori — rombel X TJKT 1",
+   "missionIds": [],
+   "campus": {
+    "x": 25.0,
+    "z": 62.0
+   },
+   "rombel": "X TJKT 1",
+   "code": "R03"
+  },
+  {
+   "id": "ruang-1",
+   "name": "Ruang 1 (Kelas XII TJKT 1)",
+   "category": "belajar",
+   "building": "A",
+   "floor": 2,
+   "campusRef": "room:R01",
+   "interior": "classroom",
+   "kind": "room",
+   "description": "Ruang kelas teori — rombel XII TJKT 1",
+   "missionIds": [],
+   "campus": {
+    "x": -25.0,
+    "z": 62.0
+   },
+   "rombel": "XII TJKT 1",
+   "code": "R01"
+  },
+  {
+   "id": "ruang-2",
+   "name": "Ruang 2 (Kelas XII TJKT 2)",
+   "category": "belajar",
+   "building": "A",
+   "floor": 2,
+   "campusRef": "room:R02",
+   "interior": "classroom",
+   "kind": "room",
+   "description": "Ruang kelas teori — rombel XII TJKT 2",
+   "missionIds": [],
+   "campus": {
+    "x": 0.0,
+    "z": 62.0
+   },
+   "rombel": "XII TJKT 2",
+   "code": "R02"
+  },
+  {
+   "id": "lab-rakitan",
+   "name": "Lab. Rakitan Komputer",
+   "category": "belajar",
+   "building": "A",
+   "floor": 2,
+   "campusRef": "room:LAB_RAKITAN",
+   "interior": "rakitan",
+   "kind": "room",
+   "description": "Bengkel perakitan & hardware komputer",
+   "missionIds": [
+    "mission-rakitan"
+   ],
+   "campus": {
+    "x": 35.0,
+    "z": 62.0
+   }
+  },
+  {
+   "id": "ruang-4",
+   "name": "Ruang 4 (Kelas X TJKT 2)",
+   "category": "belajar",
+   "building": "B",
+   "floor": 1,
+   "campusRef": "room:R04",
+   "interior": "classroom",
+   "kind": "room",
+   "description": "Ruang kelas teori — rombel X TJKT 2",
+   "missionIds": [],
+   "campus": {
+    "x": -40.0,
+    "z": -24.0
+   },
+   "rombel": "X TJKT 2",
+   "code": "R04"
+  },
+  {
+   "id": "ruang-5",
+   "name": "Ruang 5 (Kelas X AKL 1)",
+   "category": "belajar",
+   "building": "B",
+   "floor": 1,
+   "campusRef": "room:R05",
+   "interior": "classroom",
+   "kind": "room",
+   "description": "Ruang kelas teori — rombel X AKL 1",
+   "missionIds": [],
+   "campus": {
+    "x": -15.0,
+    "z": -24.0
+   },
+   "rombel": "X AKL 1",
+   "code": "R05"
+  },
+  {
+   "id": "ruang-6",
+   "name": "Ruang 6 (Kelas X BD 1)",
+   "category": "belajar",
+   "building": "B",
+   "floor": 1,
+   "campusRef": "room:R06",
+   "interior": "classroom",
+   "kind": "room",
+   "description": "Ruang kelas teori — rombel X BD 1",
+   "missionIds": [],
+   "campus": {
+    "x": 10.0,
+    "z": -24.0
+   },
+   "rombel": "X BD 1",
+   "code": "R06"
+  },
+  {
+   "id": "ruang-7",
+   "name": "Ruang 7 (Kelas X BD 2)",
+   "category": "belajar",
+   "building": "B",
+   "floor": 1,
+   "campusRef": "room:R07",
+   "interior": "classroom",
+   "kind": "room",
+   "description": "Ruang kelas teori — rombel X BD 2",
+   "missionIds": [],
+   "campus": {
+    "x": 35.0,
+    "z": -24.0
+   },
+   "rombel": "X BD 2",
+   "code": "R07"
+  },
+  {
+   "id": "perpus",
+   "name": "Perpustakaan SMK Silber",
+   "category": "belajar",
+   "building": "B",
+   "floor": 1,
+   "campusRef": "room:PERPUS",
+   "interior": "library",
+   "kind": "room",
+   "description": "Koleksi buku digital & ruang literasi",
+   "missionIds": [
+    "mission-literasi"
+   ],
+   "campus": {
+    "x": 25.0,
+    "z": -42.0
+   }
+  },
+  {
+   "id": "bank-mini",
+   "name": "Bank Mini Silber",
+   "category": "layanan",
+   "building": "B",
+   "floor": 1,
+   "campusRef": "room:BANK_MINI",
+   "interior": "bank",
+   "kind": "room",
+   "description": "Simulasi perbankan & loket teller AKL",
+   "missionIds": [
+    "mission-keuangan"
+   ],
+   "campus": {
+    "x": 48.0,
+    "z": -8.0
+   }
+  },
+  {
+   "id": "mini-market",
+   "name": "Mini Market Sekolah",
+   "category": "layanan",
+   "building": "B",
+   "floor": 1,
+   "campusRef": "room:MINI_MARKET",
+   "interior": "market",
+   "kind": "room",
+   "description": "Laboratorium ritel, POS & kasir BD",
+   "missionIds": [
+    "mission-belanja"
+   ],
+   "campus": {
+    "x": 150.0,
+    "z": 52.0
+   }
+  },
+  {
+   "id": "ruang-8",
+   "name": "Ruang 8 (Kelas XI TJKT 1)",
+   "category": "belajar",
+   "building": "B",
+   "floor": 2,
+   "campusRef": "room:R08",
+   "interior": "classroom",
+   "kind": "room",
+   "description": "Ruang kelas teori — rombel XI TJKT 1",
+   "missionIds": [],
+   "campus": {
+    "x": -15.0,
+    "z": -24.0
+   },
+   "rombel": "XI TJKT 1",
+   "code": "R08"
+  },
+  {
+   "id": "ruang-9",
+   "name": "Ruang 9 (Kelas XI DKV 1)",
+   "category": "belajar",
+   "building": "B",
+   "floor": 2,
+   "campusRef": "room:R09",
+   "interior": "classroom",
+   "kind": "room",
+   "description": "Ruang kelas teori — rombel XI DKV 1",
+   "missionIds": [],
+   "campus": {
+    "x": 10.0,
+    "z": -24.0
+   },
+   "rombel": "XI DKV 1",
+   "code": "R09"
+  },
+  {
+   "id": "lab-tik-bawah",
+   "name": "Lab. TIK 1 (Deret Bawah)",
+   "category": "belajar",
+   "building": "B",
+   "floor": 2,
+   "campusRef": "room:LAB_TIK_1",
+   "interior": "labtik",
+   "kind": "room",
+   "description": "Laboratorium komputer & jaringan dasar",
+   "missionIds": [
+    "mission-teknologi"
+   ],
+   "campus": {
+    "x": 55.0,
+    "z": -24.0
+   }
+  },
+  {
+   "id": "lab-tik-atas",
+   "name": "Lab. TIK 2 (Deret Atas)",
+   "category": "belajar",
+   "building": "B",
+   "floor": 2,
+   "campusRef": "room:LAB_TIK_2",
+   "interior": "server",
+   "kind": "room",
+   "description": "Laboratorium cyber security & server",
+   "missionIds": [
+    "mission-teknologi"
+   ],
+   "campus": {
+    "x": 35.0,
+    "z": -24.0
+   }
+  },
+  {
+   "id": "ruang-bk-bkk",
+   "name": "Ruang BK / BKK",
+   "category": "layanan",
+   "building": "B",
+   "floor": 2,
+   "campusRef": "room:RUANG_BK",
+   "interior": "bk",
+   "kind": "room",
+   "description": "Bimbingan Konseling & Bursa Kerja Khusus",
+   "missionIds": [
+    "mission-karier"
+   ],
+   "campus": {
+    "x": 55.0,
+    "z": -24.0
+   }
+  },
+  {
+   "id": "ruang-10",
+   "name": "Ruang 10 (Kelas XI AKL 1)",
+   "category": "belajar",
+   "building": "C",
+   "floor": 1,
+   "campusRef": "room:R10",
+   "interior": "classroom",
+   "kind": "room",
+   "description": "Ruang kelas teori — rombel XI AKL 1",
+   "missionIds": [],
+   "campus": {
+    "x": -145.0,
+    "z": -32.0
+   },
+   "rombel": "XI AKL 1",
+   "code": "R10"
+  },
+  {
+   "id": "ruang-11",
+   "name": "Ruang 11 (Kelas XI BD 1)",
+   "category": "belajar",
+   "building": "C",
+   "floor": 1,
+   "campusRef": "room:R11",
+   "interior": "classroom",
+   "kind": "room",
+   "description": "Ruang kelas teori — rombel XI BD 1",
+   "missionIds": [],
+   "campus": {
+    "x": -115.0,
+    "z": -32.0
+   },
+   "rombel": "XI BD 1",
+   "code": "R11"
+  },
+  {
+   "id": "ruang-12",
+   "name": "Ruang 12 (Kelas XII AKL 1)",
+   "category": "belajar",
+   "building": "C",
+   "floor": 2,
+   "campusRef": "room:R12",
+   "interior": "classroom",
+   "kind": "room",
+   "description": "Ruang kelas teori — rombel XII AKL 1",
+   "missionIds": [],
+   "campus": {
+    "x": -145.0,
+    "z": -32.0
+   },
+   "rombel": "XII AKL 1",
+   "code": "R12"
+  },
+  {
+   "id": "ruang-13",
+   "name": "Ruang 13 (Kelas XII DKV 1)",
+   "category": "belajar",
+   "building": "C",
+   "floor": 2,
+   "campusRef": "room:R13",
+   "interior": "classroom",
+   "kind": "room",
+   "description": "Ruang kelas teori — rombel XII DKV 1",
+   "missionIds": [],
+   "campus": {
+    "x": -115.0,
+    "z": -32.0
+   },
+   "rombel": "XII DKV 1",
+   "code": "R13"
+  },
+  {
+   "id": "hall-serbaguna",
+   "name": "Hall Serbaguna Gedung D",
+   "category": "fasilitas",
+   "building": "D",
+   "floor": 1,
+   "campusRef": "building:gedung-d",
+   "interior": "hall",
+   "kind": "room",
+   "description": "Aula pertemuan, stage panggung, & podium",
+   "missionIds": [],
+   "campus": {
+    "x": -174.0,
+    "z": -20.0
+   }
+  },
+  {
+   "id": "musholah",
+   "name": "Musholah Sekolah",
+   "category": "fasilitas",
+   "building": "D",
+   "floor": 1,
+   "campusRef": "room:MUSHOLAH",
+   "interior": "musholah",
+   "kind": "room",
+   "description": "Tempat ibadah, kubah hijau & area wudhu",
+   "missionIds": [],
+   "campus": {
+    "x": -174.0,
+    "z": 16.0
+   }
+  },
+  {
+   "id": "gerbang-utama",
+   "name": "Gerbang Utama",
+   "category": "fasilitas",
+   "building": "Luar",
+   "floor": 1,
+   "campusRef": "building:gate-main",
+   "interior": null,
+   "kind": "outdoor",
+   "description": "Titik masuk utama sekolah",
+   "missionIds": [
+    "mission-orientasi"
+   ],
+   "campus": {
+    "x": 168.0,
+    "z": 12.0
+   }
+  },
+  {
+   "id": "pos-keamanan",
+   "name": "Pos Keamanan",
+   "category": "layanan",
+   "building": "Luar",
+   "floor": 1,
+   "campusRef": "building:gate-main",
+   "interior": "pos",
+   "kind": "room",
+   "description": "Pos jaga security di samping gerbang utama",
+   "missionIds": [
+    "mission-orientasi"
+   ],
+   "campus": {
+    "x": 168.0,
+    "z": 12.0
+   }
+  },
+  {
+   "id": "lap-futsal",
+   "name": "Lapangan Futsal",
+   "category": "olahraga",
+   "building": "Luar",
+   "floor": 1,
+   "campusRef": "room:LAP_FUTSAL",
+   "interior": null,
+   "kind": "outdoor",
+   "description": "Lapangan rumput sintetis & tiang gawang",
+   "missionIds": [
+    "mission-olahraga"
+   ],
+   "campus": {
+    "x": 88.0,
+    "z": 0.0
+   }
+  },
+  {
+   "id": "kolam-renang",
+   "name": "Kolam Renang Sekolah",
+   "category": "olahraga",
+   "building": "Luar",
+   "floor": 1,
+   "campusRef": "building:kolam-renang",
+   "interior": null,
+   "kind": "outdoor",
+   "description": "Fasilitas olahraga renang sisi barat",
+   "missionIds": [],
+   "campus": {
+    "x": -138.0,
+    "z": 18.0
+   }
+  },
+  {
+   "id": "taman-tengah",
+   "name": "Taman Tengah & Air Mancur",
+   "category": "fasilitas",
+   "building": "Luar",
+   "floor": 1,
+   "campusRef": "room:TAMAN_TENGAH",
+   "interior": null,
+   "kind": "outdoor",
+   "description": "Plaza ruang terbuka hijau & air mancur",
+   "missionIds": [],
+   "campus": {
+    "x": -18.0,
+    "z": 16.0
+   }
+  },
+  {
+   "id": "kantin",
+   "name": "Kantin Sekolah",
+   "category": "fasilitas",
+   "building": "Luar",
+   "floor": 1,
+   "campusRef": "room:KANTIN",
+   "interior": "kantin",
+   "kind": "room",
+   "description": "Area santai & tempat makan siswa",
+   "missionIds": [],
+   "campus": {
+    "x": -75.0,
+    "z": -75.0
+   }
+  },
+  {
+   "id": "taman-terbuka",
+   "name": "Taman Terbuka & Gazebo",
+   "category": "fasilitas",
+   "building": "Luar",
+   "floor": 1,
+   "campusRef": "room:KANTIN",
+   "interior": null,
+   "kind": "outdoor",
+   "description": "Area santai, gazebo di samping kantin",
+   "missionIds": [],
+   "campus": {
+    "x": -75.0,
+    "z": -75.0
+   }
+  },
+  {
+   "id": "area-f",
+   "name": "Area F (Plaza Barat Daya)",
+   "category": "fasilitas",
+   "building": "Luar",
+   "floor": 1,
+   "campusRef": "building:area-f",
+   "interior": null,
+   "kind": "outdoor",
+   "description": "Area terbuka serbaguna & ekstrakurikuler",
+   "missionIds": [],
+   "campus": {
+    "x": -130.0,
+    "z": 95.0
+   }
+  },
+  {
+   "id": "parkir-mobil",
+   "name": "Parkiran Mobil",
+   "category": "fasilitas",
+   "building": "Luar",
+   "floor": 1,
+   "campusRef": "building:parkir-mobil",
+   "interior": null,
+   "kind": "outdoor",
+   "description": "Area parkir kendaraan roda empat (Timur)",
+   "missionIds": [],
+   "campus": {
+    "x": 150.0,
+    "z": 20.0
+   }
+  },
+  {
+   "id": "parkir-motor",
+   "name": "Parkiran Motor Siswa",
+   "category": "fasilitas",
+   "building": "Luar",
+   "floor": 1,
+   "campusRef": "room:PARKIR",
+   "interior": null,
+   "kind": "outdoor",
+   "description": "Area parkir sepeda motor siswa (Timur)",
+   "missionIds": [],
+   "campus": {
+    "x": 145.0,
+    "z": -55.0
+   }
+  }
+ ]
+}

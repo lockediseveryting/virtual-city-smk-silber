@@ -1,0 +1,403 @@
+/*
+ * Pixel Theme — gaya game pixel-art untuk SEMUA halaman (disisipkan setelah gaya bawaan halaman).
+ * Kayu hangat + malam kota. Halaman game (body.vc-game: /dunia, /pixel) hanya memakai font & tombol HUD.
+ * Hindari `inset`/`aspect-ratio`/`:is()` agar tetap jalan di Chrome 80 (HP lama).
+ */
+@font-face {
+  font-family: "Pixelify Sans";
+  src: url(/assets/fonts/pixelify-sans.woff2) format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+:root {
+  --px-font: "Pixelify Sans", system-ui, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  --px-outline: #20130a;
+  --px-wood: #c27a3c;
+  --px-wood-hi: #f0b878;
+  --px-wood-lo: #7a4520;
+  --px-wood-dk: #4a2a12;
+  --px-wood-2: #6b4423;
+  --px-ink: #22172b;
+  --px-ink-2: #2d1f38;
+  --px-ink-3: #170f1e;
+  --px-cream: #fff1d0;
+  --px-cream-2: #e9d6b0;
+  --px-muted: #c9b48f;
+  --px-gold: #ffcf4a;
+  --px-red: #b4432f;
+  --px-green: #4f8a3a;
+  --px-sky: #6fb3e0;
+  --px-ring: 0 -4px 0 0 var(--px-outline), 0 4px 0 0 var(--px-outline), -4px 0 0 0 var(--px-outline), 4px 0 0 0 var(--px-outline);
+  --px-ring-sm: 0 -3px 0 0 var(--px-outline), 0 3px 0 0 var(--px-outline), -3px 0 0 0 var(--px-outline), 3px 0 0 0 var(--px-outline);
+  --px-grain: repeating-linear-gradient(180deg, rgba(255, 255, 255, .07) 0 3px, rgba(0, 0, 0, .07) 3px 6px);
+  --px-bg-overlay: rgba(16, 10, 24, .80);
+
+  /* Variabel design system lama diarahkan ke palet pixel */
+  --c-bg: #170f1e;
+  --c-bg-2: #22172b;
+  --c-surface: #22172b;
+  --c-surface-2: #2d1f38;
+  --c-border: #4a2a12;
+  --c-border-strong: #8a5a2b;
+  --c-text: #fff1d0;
+  --c-text-muted: #c9b48f;
+  --c-text-faint: #9c8a6c;
+  --c-primary: #c27a3c;
+  --c-primary-2: #ffcf4a;
+  --c-neon: #ffcf4a;
+  --c-gold: #ffcf4a;
+  --c-orange: #e8892f;
+  --font-display: var(--px-font);
+  --font-text: var(--px-font);
+  --r-sm: 0; --r-md: 0; --r-lg: 0; --r-xl: 0; --r-pill: 0;
+}
+html[data-daypart="pagi"], html[data-daypart="siang"] { --px-bg-overlay: rgba(28, 22, 40, .66); }
+html[data-daypart="sore"] { --px-bg-overlay: rgba(40, 18, 24, .70); }
+
+/* ---------- Dasar (semua halaman non-game) ---------- */
+body:not(.vc-game) {
+  font-family: var(--px-font) !important;
+  color: var(--px-cream) !important;
+  background:
+    linear-gradient(var(--px-bg-overlay), var(--px-bg-overlay)),
+    url(/assets/img/pixel/dashboard-kota.jpg?v=2) center bottom / cover no-repeat fixed,
+    #170f1e !important;
+  image-rendering: pixelated;
+  -webkit-font-smoothing: none;
+}
+html[data-daypart="pagi"] body:not(.vc-game),
+html[data-daypart="siang"] body:not(.vc-game),
+html[data-daypart="sore"] body:not(.vc-game) {
+  background:
+    linear-gradient(var(--px-bg-overlay), var(--px-bg-overlay)),
+    url(/assets/img/pixel/dashboard-kota-siang.jpg?v=2) center bottom / cover no-repeat fixed,
+    #2a2f45 !important;
+}
+body:not(.vc-game) *:not(svg):not(path):not(i):not(code):not(pre):not(kbd) { font-family: var(--px-font) !important; }
+body.vc-game, body.vc-game button, body.vc-game input, body.vc-game textarea { font-family: var(--px-font) !important; }
+body:not(.vc-game) *, body:not(.vc-game) *::before, body:not(.vc-game) *::after { border-radius: 0 !important; }
+body:not(.vc-game) img { image-rendering: auto; }
+body:not(.vc-game) h1, body:not(.vc-game) h2, body:not(.vc-game) h3,
+body:not(.vc-game) .page-title, body:not(.vc-game) .section__title, body:not(.vc-game) .section-title {
+  color: var(--px-gold) !important;
+  text-shadow: 2px 2px 0 var(--px-wood-dk);
+  letter-spacing: .5px;
+  -webkit-text-fill-color: currentColor;
+  background-image: none;
+}
+body:not(.vc-game) a { color: var(--px-gold); }
+body:not(.vc-game) p, body:not(.vc-game) li, body:not(.vc-game) td, body:not(.vc-game) label, body:not(.vc-game) small { line-height: 1.45; }
+body:not(.vc-game) .muted, body:not(.vc-game) .faint { color: var(--px-muted) !important; }
+::selection { background: var(--px-gold); color: var(--px-outline); }
+
+/* Scrollbar pixel */
+body:not(.vc-game) ::-webkit-scrollbar { width: 12px; height: 12px; }
+body:not(.vc-game) ::-webkit-scrollbar-track { background: var(--px-ink-3); }
+body:not(.vc-game) ::-webkit-scrollbar-thumb { background: var(--px-wood); border: 3px solid var(--px-ink-3); }
+
+/* ---------- Tombol kayu ---------- */
+.px-btn,
+body:not(.vc-game) .btn,
+body:not(.vc-game) button:not(.icon-btn):not(.au-eye):not(.au-tab):not(.tabbar__item):not(.vcg__btn):not([role="tab"]):not(.px-plain),
+body:not(.vc-game) input[type="submit"], body:not(.vc-game) input[type="button"],
+body:not(.vc-game) .au-cta, body:not(.vc-game) .au-btn2, body:not(.vc-game) .vh-btn, body:not(.vc-game) .vh-chip {
+  font-family: var(--px-font) !important;
+  font-weight: 700 !important;
+  color: #fff6e0 !important;
+  -webkit-text-fill-color: #fff6e0;
+  text-shadow: 2px 2px 0 var(--px-wood-dk) !important;
+  letter-spacing: .4px;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: var(--px-grain), var(--px-wood) !important;
+  box-shadow: inset 0 3px 0 0 var(--px-wood-hi), inset 0 -4px 0 0 var(--px-wood-lo), var(--px-ring), 0 7px 0 0 rgba(0, 0, 0, .35) !important;
+  min-height: 44px;
+  padding: 8px 16px;
+  margin: 4px;
+  cursor: pointer;
+  transition: transform .08s steps(2), filter .12s;
+  image-rendering: pixelated;
+}
+.px-btn:hover,
+body:not(.vc-game) .btn:hover, body:not(.vc-game) button:not(.icon-btn):not(.au-eye):not(.au-tab):not(.tabbar__item):not(.vcg__btn):not([role="tab"]):not(.px-plain):hover,
+body:not(.vc-game) .au-cta:hover, body:not(.vc-game) .vh-btn:hover, body:not(.vc-game) .vh-chip:hover {
+  filter: brightness(1.12) saturate(1.05);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.px-btn:active,
+body:not(.vc-game) .btn:active, body:not(.vc-game) button:not(.icon-btn):not(.au-eye):not(.au-tab):not(.tabbar__item):not(.vcg__btn):not([role="tab"]):not(.px-plain):active,
+body:not(.vc-game) .au-cta:active, body:not(.vc-game) .vh-btn:active {
+  transform: translateY(4px);
+  box-shadow: inset 0 3px 0 0 var(--px-wood-lo), inset 0 -2px 0 0 var(--px-wood-hi), var(--px-ring) !important;
+}
+body:not(.vc-game) button:disabled, body:not(.vc-game) .btn[disabled] { filter: grayscale(.7) brightness(.8); cursor: not-allowed; transform: none; }
+.px-btn:focus-visible, body:not(.vc-game) button:focus-visible, body:not(.vc-game) a:focus-visible, body:not(.vc-game) input:focus-visible, body:not(.vc-game) select:focus-visible {
+  outline: 3px dashed var(--px-gold) !important;
+  outline-offset: 5px;
+}
+/* Varian: emas (aksi utama), merah (bahaya), gelap (sekunder) */
+.px-btn--gold, body:not(.vc-game) .au-cta, body:not(.vc-game) .btn--gold, body:not(.vc-game) .vh-btn--oranye, body:not(.vc-game) .vh-chip.is-active {
+  background: var(--px-grain), var(--px-acc, #e0a032) !important;
+  box-shadow: inset 0 3px 0 0 var(--px-acc-hi, #ffe08a), inset 0 -4px 0 0 var(--px-acc-lo, #9a5f12), var(--px-ring), 0 7px 0 0 rgba(0, 0, 0, .35) !important;
+}
+.px-btn--red, body:not(.vc-game) .btn--danger {
+  background: var(--px-grain), var(--px-red) !important;
+  box-shadow: inset 0 3px 0 0 #e8836a, inset 0 -4px 0 0 #6e2116, var(--px-ring), 0 7px 0 0 rgba(0, 0, 0, .35) !important;
+}
+.px-btn--dark, body:not(.vc-game) .btn--ghost, body:not(.vc-game) .btn--secondary, body:not(.vc-game) .au-btn2--ghost, body:not(.vc-game) .vh-chip {
+  background: var(--px-grain), var(--px-dk, #5b3a22) !important;
+  box-shadow: inset 0 3px 0 0 var(--px-dk-hi, #8a5a2b), inset 0 -4px 0 0 var(--px-dk-lo, #3a2414), var(--px-ring), 0 7px 0 0 rgba(0, 0, 0, .35) !important;
+}
+body:not(.vc-game) .btn--sm { min-height: 36px; padding: 4px 10px; font-size: .85rem; }
+/* Tombol ikon kecil (✕, 🔔, ⚙️) */
+body:not(.vc-game) .icon-btn {
+  background: var(--px-dk, #5b3a22) !important;
+  border: 0 !important;
+  color: var(--px-cream) !important;
+  box-shadow: inset 0 2px 0 0 var(--px-dk-hi, #8a5a2b), inset 0 -3px 0 0 var(--px-dk-lo, #3a2414), var(--px-ring-sm) !important;
+  min-width: 40px; min-height: 40px;
+}
+
+/* ---------- Input ---------- */
+body:not(.vc-game) input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="submit"]):not([type="button"]):not([type="file"]),
+body:not(.vc-game) select, body:not(.vc-game) textarea {
+  font-family: var(--px-font) !important;
+  font-size: max(16px, 1rem) !important;
+  color: var(--px-cream) !important;
+  -webkit-text-fill-color: var(--px-cream);
+  background: var(--px-ink-3) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: inset 3px 3px 0 0 #0a0610, var(--px-ring-sm), 0 0 0 6px var(--px-wood-2) !important;
+  margin: 6px 6px 8px;
+  min-height: 44px;
+}
+body:not(.vc-game) input::placeholder, body:not(.vc-game) textarea::placeholder { color: #8f7d62 !important; -webkit-text-fill-color: #8f7d62; }
+body:not(.vc-game) input:focus, body:not(.vc-game) select:focus, body:not(.vc-game) textarea:focus {
+  box-shadow: inset 3px 3px 0 0 #0a0610, var(--px-ring-sm), 0 0 0 6px var(--px-gold) !important;
+  outline: none !important;
+}
+body:not(.vc-game) input[type="checkbox"], body:not(.vc-game) input[type="radio"] { accent-color: var(--px-wood); width: 20px; height: 20px; }
+body:not(.vc-game) input[type="range"], body.vc-game input[type="range"] { accent-color: var(--px-wood); }
+body:not(.vc-game) option, body:not(.vc-game) optgroup { background: var(--px-ink-3); color: var(--px-cream); }
+
+/* ---------- Panel / kartu ---------- */
+.px-panel,
+body:not(.vc-game) .card, body:not(.vc-game) .vh-hero, body:not(.vc-game) .vh-box, body:not(.vc-game) .vh-stat,
+body:not(.vc-game) .vh-server-card, body:not(.vc-game) .game-portal-card, body:not(.vc-game) .g-card,
+body:not(.vc-game) .stat-card, body:not(.vc-game) .grid-stats > div, body:not(.vc-game) .empty-state,
+body:not(.vc-game) .box, body:not(.vc-game) .panel {
+  background: rgba(34, 23, 43, .94) !important;
+  color: var(--px-cream) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: inset 0 0 0 3px var(--px-wood-2), inset 0 0 0 6px var(--px-wood-dk), var(--px-ring), 0 8px 0 0 rgba(0, 0, 0, .35) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.px-panel { padding: 16px; }
+body:not(.vc-game) .card--interactive:hover, body:not(.vc-game) .vh-server-card:hover { transform: translateY(-2px); filter: brightness(1.08); }
+body:not(.vc-game) .card *, body:not(.vc-game) .vh-hero * { border-color: var(--px-wood-dk); }
+body:not(.vc-game) hr { border: 0; height: 4px; background: repeating-linear-gradient(90deg, var(--px-wood-2) 0 8px, transparent 8px 12px); }
+
+/* Statistik */
+body:not(.vc-game) .vh-stat__val, body:not(.vc-game) .stat-value, body:not(.vc-game) .grid-stats strong { color: var(--px-gold) !important; text-shadow: 2px 2px 0 var(--px-wood-dk); }
+body:not(.vc-game) .vh-stat__lbl { color: var(--px-muted) !important; }
+body:not(.vc-game) .xpbar, body:not(.vc-game) .vh-xpbar {
+  height: 14px; background: var(--px-ink-3) !important; border: 0 !important; box-shadow: var(--px-ring-sm) !important; overflow: hidden;
+}
+body:not(.vc-game) .xpbar__fill, body:not(.vc-game) .vh-xpbar > div {
+  background: repeating-linear-gradient(90deg, #8fd14f 0 6px, #6bb03a 6px 8px) !important; box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .25) !important;
+}
+
+/* Badge & chip */
+body:not(.vc-game) .badge, body:not(.vc-game) .vh-badge, body:not(.vc-game) .level-pill {
+  background: var(--px-wood-dk) !important; color: var(--px-gold) !important; border: 0 !important;
+  box-shadow: var(--px-ring-sm) !important; font-weight: 700; padding: 3px 9px;
+}
+body:not(.vc-game) .badge--danger { background: var(--px-red) !important; color: #fff !important; }
+
+/* Tabel */
+body:not(.vc-game) table { border-collapse: separate !important; border-spacing: 0 !important; background: rgba(23, 15, 30, .95) !important; color: var(--px-cream) !important; box-shadow: var(--px-ring-sm); }
+body:not(.vc-game) th { background: var(--px-wood-dk) !important; color: var(--px-gold) !important; border: 0 !important; border-bottom: 3px solid var(--px-outline) !important; }
+body:not(.vc-game) td { border: 0 !important; border-bottom: 2px dashed rgba(138, 90, 43, .45) !important; color: var(--px-cream); }
+body:not(.vc-game) tr:hover td { background: rgba(194, 122, 60, .12) !important; }
+
+/* ---------- Shell: topbar, sidebar, tabbar, sheet, toast ---------- */
+body:not(.vc-game) .topbar {
+  background: var(--px-grain), #3a2414 !important;
+  border: 0 !important;
+  box-shadow: inset 0 -4px 0 0 var(--px-outline), inset 0 3px 0 0 #6b4423, 0 6px 0 rgba(0, 0, 0, .35) !important;
+  backdrop-filter: none !important;
+}
+body:not(.vc-game) .topbar__title { color: var(--px-gold) !important; text-shadow: 2px 2px 0 var(--px-outline); }
+body:not(.vc-game) .topbar img, body:not(.vc-game) .sidebar__brand img { box-shadow: var(--px-ring-sm) !important; }
+body:not(.vc-game) .sidebar {
+  background: rgba(23, 15, 30, .96) !important;
+  border: 0 !important;
+  box-shadow: inset -4px 0 0 0 var(--px-wood-2), inset -8px 0 0 0 var(--px-outline) !important;
+}
+body:not(.vc-game) .sidebar__section-title { color: var(--px-muted) !important; letter-spacing: 1px; }
+body:not(.vc-game) .sidebar__link { color: var(--px-cream) !important; margin: 3px 10px; border: 0 !important; }
+body:not(.vc-game) .sidebar__link:hover { background: rgba(194, 122, 60, .25) !important; }
+body:not(.vc-game) .sidebar__link.is-active {
+  background: var(--px-grain), var(--px-wood) !important; color: #fff6e0 !important;
+  box-shadow: inset 0 2px 0 var(--px-wood-hi), inset 0 -3px 0 var(--px-wood-lo), var(--px-ring-sm) !important;
+  text-shadow: 2px 2px 0 var(--px-wood-dk);
+}
+body:not(.vc-game) .tabbar {
+  background: var(--px-grain), #3a2414 !important;
+  border: 0 !important;
+  box-shadow: inset 0 4px 0 0 var(--px-outline), inset 0 7px 0 0 #6b4423 !important;
+  backdrop-filter: none !important;
+}
+body:not(.vc-game) .tabbar__item { color: var(--px-cream-2) !important; }
+body:not(.vc-game) .tabbar__item.is-active { color: var(--px-gold) !important; background: rgba(0, 0, 0, .25) !important; }
+body:not(.vc-game) .fab {
+  background: var(--px-grain), #e0a032 !important; border: 0 !important;
+  box-shadow: inset 0 3px 0 #ffe08a, inset 0 -4px 0 #9a5f12, var(--px-ring), 0 6px 0 rgba(0, 0, 0, .35) !important;
+}
+body:not(.vc-game) .sheet-backdrop { background: rgba(10, 6, 14, .72) !important; backdrop-filter: none !important; }
+body:not(.vc-game) .sheet, body:not(.vc-game) [role="dialog"] > div:first-child:not(.vcg__box) {
+  border: 0 !important;
+}
+body:not(.vc-game) .sheet {
+  background: var(--px-ink) !important; color: var(--px-cream) !important;
+  box-shadow: inset 0 0 0 4px var(--px-wood-2), inset 0 0 0 8px var(--px-wood-dk), var(--px-ring) !important;
+}
+body:not(.vc-game) .sheet__grabber { background: var(--px-wood) !important; height: 6px; }
+body:not(.vc-game) .toast {
+  background: var(--px-ink) !important; color: var(--px-cream) !important; border: 0 !important;
+  box-shadow: inset 0 0 0 3px var(--px-wood-2), var(--px-ring), 0 6px 0 rgba(0, 0, 0, .4) !important;
+}
+body:not(.vc-game) .toast--success { box-shadow: inset 0 0 0 3px var(--px-green), var(--px-ring), 0 6px 0 rgba(0, 0, 0, .4) !important; }
+body:not(.vc-game) .toast--error { box-shadow: inset 0 0 0 3px var(--px-red), var(--px-ring), 0 6px 0 rgba(0, 0, 0, .4) !important; }
+body:not(.vc-game) .splash { background: #140d1d !important; }
+body:not(.vc-game) footer, body:not(.vc-game) .site-footer { color: var(--px-muted) !important; background: transparent !important; }
+
+/* Modal buatan halaman (div fixed full-screen dengan kotak di tengah) */
+body:not(.vc-game) [id^="modal"] > div {
+  background: var(--px-ink) !important; border: 0 !important;
+  box-shadow: inset 0 0 0 4px var(--px-wood-2), inset 0 0 0 8px var(--px-wood-dk), var(--px-ring) !important;
+}
+
+/* Animasi berlebihan dimatikan untuk pengguna yang memilih kurangi gerak */
+@media (prefers-reduced-motion: reduce) {
+  .px-btn, body:not(.vc-game) button { transition: none !important; }
+}
+
+/* ---------- Halaman game (/dunia, /pixel): hanya tombol HUD ---------- */
+body.vc-game .px-btn { font-size: 15px; }
+
+/* Garis neon tema lama di atas layar tidak dipakai lagi */
+body::before { display: none !important; }
+
+/* ---------- Kelas halaman admin (/admin, /admin-game, /admin/ai) ---------- */
+body:not(.vc-game) .card-stat {
+  background: rgba(34, 23, 43, .94) !important; color: var(--px-cream) !important; border: 0 !important;
+  box-shadow: inset 0 0 0 3px var(--px-wood-2), inset 0 0 0 6px var(--px-wood-dk), var(--px-ring), 0 8px 0 0 rgba(0, 0, 0, .35) !important;
+}
+body:not(.vc-game) .stat-val { color: var(--px-gold) !important; text-shadow: 2px 2px 0 var(--px-wood-dk); }
+body:not(.vc-game) .stat-lbl { color: var(--px-cream-2) !important; text-transform: uppercase; letter-spacing: 1px; }
+body:not(.vc-game) .stat-sub { color: var(--px-muted) !important; }
+body:not(.vc-game) .section-title {
+  display: block; padding: 8px 14px !important; margin: 28px 0 14px !important; border: 0 !important;
+  background: var(--px-grain), #3a2414 !important; box-shadow: inset 0 3px 0 #6b4423, var(--px-ring) !important;
+}
+body:not(.vc-game) .section-title span { color: var(--px-gold) !important; }
+body:not(.vc-game) .badge-role, body:not(.vc-game) .badge-root { background: var(--px-wood-dk) !important; color: var(--px-gold) !important; border: 0 !important; box-shadow: var(--px-ring-sm) !important; }
+body:not(.vc-game) .btn-blue { background: var(--px-grain), #3d6a9c !important; box-shadow: inset 0 3px 0 #7fa8d4, inset 0 -4px 0 #213c5a, var(--px-ring), 0 7px 0 rgba(0, 0, 0, .35) !important; }
+body:not(.vc-game) .btn-red { background: var(--px-grain), var(--px-red) !important; box-shadow: inset 0 3px 0 #e8836a, inset 0 -4px 0 #6e2116, var(--px-ring), 0 7px 0 rgba(0, 0, 0, .35) !important; }
+body:not(.vc-game) .btn-blue, body:not(.vc-game) .btn-red, body:not(.vc-game) .btn-sec, body:not(.vc-game) .action-grid > * {
+  border: 0 !important; color: #fff6e0 !important; text-shadow: 2px 2px 0 var(--px-wood-dk); font-weight: 700;
+}
+body:not(.vc-game) .btn-sec, body:not(.vc-game) .action-grid > a { background: var(--px-grain), #5b3a22 !important; box-shadow: inset 0 3px 0 #8a5a2b, inset 0 -4px 0 #3a2414, var(--px-ring), 0 7px 0 rgba(0, 0, 0, .35) !important; }
+body:not(.vc-game) .audit-ok { background: #24401c !important; color: #c9f2a5 !important; border: 0 !important; box-shadow: var(--px-ring-sm); }
+body:not(.vc-game) .audit-fail { background: #4a1a14 !important; color: #ffc2b4 !important; border: 0 !important; box-shadow: var(--px-ring-sm); }
+body:not(.vc-game) .container { background: transparent !important; }
+body:not(.vc-game) .container > div[style*="background"]:not(.card):not(.card-stat):not(.grid-stats) {
+  background: rgba(34, 23, 43, .94) !important; border: 0 !important;
+  box-shadow: inset 0 0 0 3px var(--px-wood-2), inset 0 0 0 6px var(--px-wood-dk), var(--px-ring) !important;
+}
+body:not(.vc-game) .bottomnav {
+  background: var(--px-grain), #3a2414 !important; border: 0 !important; backdrop-filter: none !important;
+  box-shadow: inset 0 4px 0 var(--px-outline), inset 0 7px 0 #6b4423 !important;
+}
+body:not(.vc-game) .bottomnav a { color: var(--px-cream-2) !important; }
+body:not(.vc-game) .bottomnav a.is-active { color: var(--px-gold) !important; background: rgba(0, 0, 0, .25) !important; }
+@media (max-width: 899px) { body.px-admin .pxd { height: calc(100vh - 52px); } }
+
+/* Dunia Pixel 2D: suasana waktu (filter ringan pada satu kanvas) */
+html[data-daypart="pagi"] #pixCanvas { filter: sepia(.08) saturate(1.06) brightness(1.03); }
+html[data-daypart="sore"] #pixCanvas { filter: sepia(.28) saturate(1.2) brightness(.94); }
+html[data-daypart="malam"] #pixCanvas { filter: brightness(.6) saturate(.8) hue-rotate(-14deg); }
+
+/* ---------- Dunia 3D/Pixel: lobi, modal & tombol HUD bertema kayu (ukuran HUD tidak diubah) ---------- */
+body.vc-game *:not(svg):not(path):not(code):not(canvas) { font-family: var(--px-font) !important; }
+#worldLobby {
+  background: linear-gradient(rgba(14, 9, 22, .78), rgba(14, 9, 22, .86)), url(/assets/img/pixel/dashboard-kota.jpg?v=2) center bottom / cover no-repeat !important;
+  image-rendering: pixelated; backdrop-filter: none !important;
+}
+html[data-daypart="pagi"] #worldLobby, html[data-daypart="siang"] #worldLobby, html[data-daypart="sore"] #worldLobby {
+  background: linear-gradient(rgba(28, 22, 40, .7), rgba(28, 22, 40, .8)), url(/assets/img/pixel/dashboard-kota-siang.jpg?v=2) center bottom / cover no-repeat !important;
+}
+body.vc-game .modal-card, body.vc-game .modal-card *, body.vc-game .hud-btn { border-radius: 0 !important; }
+body.vc-game .modal-card {
+  background: rgba(34, 23, 43, .96) !important; color: var(--px-cream) !important; border: 0 !important;
+  box-shadow: inset 0 0 0 4px var(--px-wood-2), inset 0 0 0 8px var(--px-wood-dk), var(--px-ring), 0 10px 0 rgba(0, 0, 0, .4) !important;
+}
+body.vc-game .modal-card h2, body.vc-game .modal-card h3 { color: var(--px-gold) !important; text-shadow: 2px 2px 0 var(--px-wood-dk); }
+body.vc-game .modal-card .card {
+  background: rgba(23, 15, 30, .92) !important; border: 0 !important;
+  box-shadow: inset 0 0 0 3px var(--px-wood-2), var(--px-ring-sm) !important;
+}
+body.vc-game .modal-card .muted, body.vc-game .modal-card .faint { color: var(--px-muted) !important; }
+body.vc-game .modal-card .btn, body.vc-game .modal-card button:not(.lobby-char):not(.icon-btn) {
+  color: #fff6e0 !important; text-shadow: 2px 2px 0 var(--px-wood-dk); font-weight: 700; border: 0 !important;
+  background: var(--px-grain), var(--px-wood) !important;
+  box-shadow: inset 0 3px 0 var(--px-wood-hi), inset 0 -4px 0 var(--px-wood-lo), var(--px-ring-sm), 0 5px 0 rgba(0, 0, 0, .35) !important;
+}
+body.vc-game .modal-card .btn:active, body.vc-game .modal-card button:not(.lobby-char):active { transform: translateY(3px); }
+body.vc-game .modal-card input:not([type="checkbox"]):not([type="radio"]), body.vc-game .modal-card select, body.vc-game .modal-card textarea {
+  font-size: max(16px, 1rem) !important; color: var(--px-cream) !important; background: var(--px-ink-3) !important; border: 0 !important;
+  box-shadow: inset 3px 3px 0 #0a0610, var(--px-ring-sm) !important;
+}
+body.vc-game .modal-card .badge { background: var(--px-wood-dk) !important; color: var(--px-gold) !important; border: 0 !important; box-shadow: var(--px-ring-sm); }
+body.vc-game .modal-card .xpbar { background: var(--px-ink-3) !important; box-shadow: var(--px-ring-sm); }
+body.vc-game .modal-card .xpbar__fill { background: repeating-linear-gradient(90deg, #8fd14f 0 6px, #6bb03a 6px 8px) !important; }
+body.vc-game .lobby-char { background: rgba(23, 15, 30, .92) !important; border: 0 !important; box-shadow: var(--px-ring-sm), inset 0 0 0 2px #3a2a4a !important; color: var(--px-cream) !important; }
+body.vc-game .lobby-char.is-on { background: var(--px-grain), var(--px-wood) !important; box-shadow: inset 0 3px 0 var(--px-wood-hi), inset 0 -4px 0 var(--px-wood-lo), var(--px-ring-sm) !important; }
+body.vc-game .lobby-char.is-on small { color: #fff6e0 !important; }
+body.vc-game .hud-btn {
+  background: rgba(58, 36, 20, .9) !important; border: 0 !important; color: var(--px-cream) !important;
+  box-shadow: inset 0 2px 0 #8a5a2b, inset 0 -3px 0 #2a180c, var(--px-ring-sm) !important;
+}
+body.vc-game .hud-btn:hover { background: rgba(194, 122, 60, .95) !important; }
+
+/* Banner "Pasang aplikasi" tidak menutupi kontrol di halaman game (tetap ada di dashboard/pengaturan) */
+body.vc-game .install-banner, body.vc-game #pwaInstallBanner { display: none !important; }
+
+/* ---------- Tombol hidup: membesar saat diarahkan kursor, mengecil saat ditekan (vc-sound.js memberi suara) ---------- */
+@media (hover: hover) {
+  body:not(.vc-game) :is(.px-btn, .pxd-btn, .pxd-icon, .pxd-extra, .btn, .au-tab, .pxc-chip, .pxc-tab, .chip, .vcm-toggle):not(:disabled):hover,
+  body.vc-game :is(#worldLobby, [role="dialog"]) :is(.px-btn, .btn, button):not(:disabled):hover {
+    transform: scale(1.06); filter: brightness(1.1); z-index: 1;
+  }
+}
+body:not(.vc-game) :is(.px-btn, .pxd-btn, .pxd-icon, .pxd-extra, .btn, .au-tab, .pxc-chip, .pxc-tab, .chip, .vcm-toggle):not(:disabled):active,
+body.vc-game :is(#worldLobby, [role="dialog"]) :is(.px-btn, .btn, button):not(:disabled):active {
+  transform: scale(.94); filter: brightness(.95);
+}
+body:not(.vc-game) :is(.px-btn, .pxd-btn, .pxd-icon, .pxd-extra, .btn, .au-tab, .pxc-chip, .pxc-tab, .chip, .vcm-toggle) {
+  transition: transform .12s cubic-bezier(.34, 1.56, .64, 1), filter .12s;
+}
+@media (prefers-reduced-motion: reduce) {
+  body :is(.px-btn, .pxd-btn, .pxd-icon, .pxd-extra, .btn, .au-tab, .chip, .vcm-toggle) { transition: none !important; transform: none !important; }
+}
+.vcm-toggle--float {
+  position: fixed; z-index: 40; left: max(12px, env(safe-area-inset-left)); bottom: max(12px, env(safe-area-inset-bottom));
+  width: 44px; height: 44px; padding: 0; border: 0; cursor: pointer; font-size: 20px;
+  background: #5b3a22; color: #fff; box-shadow: inset 0 3px 0 #8a5a2b, inset 0 -4px 0 #3a2414, 0 0 0 3px #20130a, 0 5px 0 rgba(0, 0, 0, .35);
+}

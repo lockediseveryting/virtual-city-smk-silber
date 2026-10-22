@@ -1,0 +1,108 @@
+{
+  "name": "Virtual City SMK Silber",
+  "short_name": "SMK Silber",
+  "id": "/virtual-city-smk-silber",
+  "description": "Platform game edukasi 3D virtual dan pembelajaran SMK Silber",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "landscape",
+  "theme_color": "#140d1d",
+  "background_color": "#140d1d",
+  "lang": "id",
+  "dir": "ltr",
+  "categories": [
+    "education",
+    "games"
+  ],
+  "icons": [
+    {
+      "src": "/assets/img/logo-silber.jpg",
+      "sizes": "600x600",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/screenshots/home-mobile.png",
+      "sizes": "540x960",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Beranda Virtual City SMK Silber di ponsel"
+    },
+    {
+      "src": "/assets/screenshots/home-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Beranda Virtual City SMK Silber di desktop"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dunia 3D",
+      "short_name": "Dunia",
+      "description": "Jelajah sekolah 3D Virtual City",
+      "url": "/dunia",
+      "icons": [
+        {
+          "src": "/assets/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Jadwal Pelajaran",
+      "short_name": "Jadwal",
+      "description": "Cek jadwal pelajaran harian siswa dan guru",
+      "url": "/jadwal",
+      "icons": [
+        {
+          "src": "/assets/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Peta Sekolah",
+      "short_name": "Peta",
+      "description": "Peta interaktif denah 2D sekolah",
+      "url": "/peta",
+      "icons": [
+        {
+          "src": "/assets/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "display_override": [
+    "fullscreen",
+    "standalone"
+  ]
+}

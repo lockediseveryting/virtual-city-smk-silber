@@ -1,0 +1,22 @@
+# Apache URL rewrite for Virtual City SMK Silber
+RewriteEngine On
+RewriteBase /
+
+# Block sensitive and hidden files
+RewriteRule (^|/)\.(?!well-known) - [F]
+RewriteRule \.(sqlite|sql|log|bak|env|ini|sh)$ - [F]
+
+# Block aggressive scanners & recon tools by User-Agent (Katana, ProjectDiscovery, etc.)
+RewriteCond %{HTTP_USER_AGENT} (katana|projectdiscovery|nuclei|httpx|gobuster|dirsearch|ffuf|sqlmap|nikto|wpscan|masscan|zgrab|hakrawler|gospider|crawlergo|crawl4ai|crawlee|feroxbuster|dirbuster|wfuzz|arachni|acunetix|netsparker|commix|xsstrike|dalfox|whatweb|jaeles|naabu) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} (GPTBot|ChatGPT-User|OAI-SearchBot|CCBot|ClaudeBot|Claude-Web|anthropic-ai|Google-Extended|Bytespider|PerplexityBot|Amazonbot|meta-externalagent|FacebookBot|Applebot-Extended|cohere-ai|Diffbot|ImagesiftBot|Omgilibot|YouBot|DataForSeoBot|PetalBot|MJ12bot|AhrefsBot|SemrushBot|scrapy) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "Chrome/113\.0\.0\.0" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "Chrome/114\.0\.0\.0" [NC]
+RewriteRule ^ - [F,L]
+
+# Allow real files and directories to be served directly
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Route all other requests to front controller
+RewriteRule ^ index.php [QSA,L]

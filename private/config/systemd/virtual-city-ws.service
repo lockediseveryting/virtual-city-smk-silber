@@ -1,0 +1,22 @@
+[Unit]
+Description=Virtual City SMK Silber v5 WebSocket Server
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www
+ExecStart=/usr/bin/node /var/www/private/bin/websocket_server.js
+Restart=always
+RestartSec=5
+Environment=NODE_ENV=production
+Environment=WS_PORT=8090
+
+# Pengerasan keamanan service
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,680 @@
+{
+  "version": "5.0.0",
+  "school": "SMK Silber",
+  "scale": 1.0,
+  "floors": [
+    {
+      "id": 1,
+      "name": "Lantai 1",
+      "elevation": 0.0
+    },
+    {
+      "id": 2,
+      "name": "Lantai 2",
+      "elevation": 10.0
+    },
+    {
+      "id": 3,
+      "name": "Lantai 3",
+      "elevation": 20.0
+    },
+    {
+      "id": 4,
+      "name": "Lantai 4",
+      "elevation": 30.0
+    }
+  ],
+  "spawn": {
+    "x": 4.0,
+    "y": 0.0,
+    "z": -24.0,
+    "heading": 180,
+    "building": "gedung-b"
+  },
+  "buildings": [
+    {
+      "id": "gate-main",
+      "name": "Gerbang Utama & Pos Keamanan",
+      "building": "Luar",
+      "floor": 1,
+      "bounds": {
+        "x": 168.0,
+        "z": 12.0,
+        "width": 26.0,
+        "depth": 6.0,
+        "height": 16.0
+      },
+      "wallColor": "#1e3a8a",
+      "roofColor": "#f59e0b",
+      "type": "gate"
+    },
+    {
+      "id": "gedung-a",
+      "name": "Gedung A (Pusat Administrasi & Kejuruan)",
+      "building": "A",
+      "floor": 1,
+      "hasFloor2": true,
+      "bounds": {
+        "x": 0.0,
+        "z": 62.0,
+        "width": 84.0,
+        "depth": 28.0,
+        "height": 40
+      },
+      "wallColor": "#ffffff",
+      "roofColor": "#1e3a8a",
+      "type": "academic",
+      "floors": 4
+    },
+    {
+      "id": "gedung-b",
+      "name": "Gedung B (Ruang Kelas & Lab Komputer)",
+      "building": "B",
+      "floor": 1,
+      "hasFloor2": true,
+      "bounds": {
+        "x": 2.0,
+        "z": -24.0,
+        "width": 110.0,
+        "depth": 26.0,
+        "height": 40
+      },
+      "wallColor": "#f1f5f9",
+      "roofColor": "#0284c7",
+      "type": "academic",
+      "floors": 4
+    },
+    {
+      "id": "gedung-c",
+      "name": "Gedung C (Kelas & Perpustakaan)",
+      "building": "C",
+      "floor": 1,
+      "hasFloor2": true,
+      "bounds": {
+        "x": -130.0,
+        "z": -32.0,
+        "width": 64.0,
+        "depth": 26.0,
+        "height": 40
+      },
+      "wallColor": "#ffffff",
+      "roofColor": "#059669",
+      "type": "academic",
+      "floors": 4
+    },
+    {
+      "id": "gedung-d",
+      "name": "Gedung D",
+      "building": "D",
+      "floor": 1,
+      "hasFloor2": true,
+      "bounds": {
+        "x": -176.0,
+        "z": -20.0,
+        "width": 26.0,
+        "depth": 40.0,
+        "height": 30
+      },
+      "wallColor": "#f8fafc",
+      "roofColor": "#d97706",
+      "type": "academic",
+      "floors": 3
+    },
+    {
+      "id": "perpus",
+      "name": "Perpustakaan SMK Silber",
+      "building": "B",
+      "floor": 1,
+      "bounds": {
+        "x": 8.0,
+        "z": -52.0,
+        "width": 34.0,
+        "depth": 20.0,
+        "height": 14.0
+      },
+      "wallColor": "#fef08a",
+      "roofColor": "#ca8a04",
+      "type": "library"
+    },
+    {
+      "id": "bank-mini",
+      "name": "Bank Mini SMK Silber",
+      "building": "B",
+      "floor": 1,
+      "bounds": {
+        "x": 46.0,
+        "z": 0.0,
+        "width": 20.0,
+        "depth": 18.0,
+        "height": 10.0
+      },
+      "wallColor": "#dbeafe",
+      "roofColor": "#1d4ed8",
+      "type": "bank"
+    },
+    {
+      "id": "mini-market",
+      "name": "Mini Market SMK Silber",
+      "building": "B",
+      "floor": 1,
+      "bounds": {
+        "x": 150.0,
+        "z": 52.0,
+        "width": 26.0,
+        "depth": 22.0,
+        "height": 10.0
+      },
+      "wallColor": "#fbcfe8",
+      "roofColor": "#db2777",
+      "type": "market"
+    },
+    {
+      "id": "musholah",
+      "name": "Musholah Sekolah",
+      "building": "D",
+      "floor": 1,
+      "bounds": {
+        "x": -174.0,
+        "z": 16.0,
+        "width": 28.0,
+        "depth": 26.0,
+        "height": 12.0
+      },
+      "wallColor": "#dcfce7",
+      "roofColor": "#16a34a",
+      "hasDome": true,
+      "type": "prayer"
+    },
+    {
+      "id": "ruang-praktik",
+      "name": "Ruang Praktik Siswa (RPS)",
+      "building": "A",
+      "floor": 1,
+      "bounds": {
+        "x": -100.0,
+        "z": 50.0,
+        "width": 42.0,
+        "depth": 26.0,
+        "height": 14.0
+      },
+      "wallColor": "#e2e8f0",
+      "roofColor": "#0f766e",
+      "type": "workshop"
+    },
+    {
+      "id": "lab-jaringan",
+      "name": "Lab Jaringan Komputer TJKT",
+      "building": "A",
+      "floor": 1,
+      "bounds": {
+        "x": -61.0,
+        "z": 50.0,
+        "width": 34.0,
+        "depth": 26.0,
+        "height": 14.0
+      },
+      "wallColor": "#cffafe",
+      "roofColor": "#0369a1",
+      "type": "lab"
+    },
+    {
+      "id": "kolam-renang",
+      "name": "Kolam Renang Sekolah",
+      "building": "Luar",
+      "floor": 1,
+      "bounds": {
+        "x": -138.0,
+        "z": 18.0,
+        "width": 30.0,
+        "depth": 20.0,
+        "height": 3.0
+      },
+      "wallColor": "#bae6fd",
+      "roofColor": "#0ea5e9",
+      "type": "pool"
+    },
+    {
+      "id": "area-f",
+      "name": "Area F (Plaza Barat Daya)",
+      "building": "Luar",
+      "floor": 1,
+      "bounds": {
+        "x": -130.0,
+        "z": 95.0,
+        "width": 44.0,
+        "depth": 26.0,
+        "height": 4.0
+      },
+      "wallColor": "#e2e8f0",
+      "roofColor": "#64748b",
+      "type": "plaza"
+    },
+    {
+      "id": "parkir-mobil",
+      "name": "Parkir Mobil (Sisi Timur)",
+      "building": "Luar",
+      "floor": 1,
+      "bounds": {
+        "x": 120.0,
+        "z": 36.0,
+        "width": 28.0,
+        "depth": 20.0,
+        "height": 4.0
+      },
+      "wallColor": "#f1f5f9",
+      "roofColor": "#475569",
+      "type": "parking"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "R01",
+      "code": "R01",
+      "name": "Ruang 1",
+      "building": "A",
+      "floor": 2,
+      "x": -25.0,
+      "z": 62.0,
+      "type": "classroom"
+    },
+    {
+      "id": "R02",
+      "code": "R02",
+      "name": "Ruang 2",
+      "building": "A",
+      "floor": 2,
+      "x": 0.0,
+      "z": 62.0,
+      "type": "classroom"
+    },
+    {
+      "id": "R03",
+      "code": "R03",
+      "name": "Ruang 3",
+      "building": "A",
+      "floor": 1,
+      "x": 38.0,
+      "z": 62.0,
+      "type": "classroom"
+    },
+    {
+      "id": "R04",
+      "code": "R04",
+      "name": "Ruang 4",
+      "building": "B",
+      "floor": 1,
+      "x": -40.0,
+      "z": -24.0,
+      "type": "classroom"
+    },
+    {
+      "id": "R05",
+      "code": "R05",
+      "name": "Ruang 5",
+      "building": "B",
+      "floor": 1,
+      "x": -15.0,
+      "z": -24.0,
+      "type": "classroom"
+    },
+    {
+      "id": "R06",
+      "code": "R06",
+      "name": "Ruang 6",
+      "building": "B",
+      "floor": 1,
+      "x": 10.0,
+      "z": -24.0,
+      "type": "classroom"
+    },
+    {
+      "id": "R07",
+      "code": "R07",
+      "name": "Ruang 7",
+      "building": "B",
+      "floor": 1,
+      "x": 35.0,
+      "z": -24.0,
+      "type": "classroom"
+    },
+    {
+      "id": "R08",
+      "code": "R08",
+      "name": "Ruang 8",
+      "building": "B",
+      "floor": 2,
+      "x": -15.0,
+      "z": -24.0,
+      "type": "classroom"
+    },
+    {
+      "id": "R09",
+      "code": "R09",
+      "name": "Ruang 9",
+      "building": "B",
+      "floor": 2,
+      "x": 10.0,
+      "z": -24.0,
+      "type": "classroom"
+    },
+    {
+      "id": "R10",
+      "code": "R10",
+      "name": "Ruang 10",
+      "building": "C",
+      "floor": 1,
+      "x": -145.0,
+      "z": -32.0,
+      "type": "classroom"
+    },
+    {
+      "id": "R11",
+      "code": "R11",
+      "name": "Ruang 11",
+      "building": "C",
+      "floor": 1,
+      "x": -115.0,
+      "z": -32.0,
+      "type": "classroom"
+    },
+    {
+      "id": "R12",
+      "code": "R12",
+      "name": "Ruang 12",
+      "building": "C",
+      "floor": 2,
+      "x": -145.0,
+      "z": -32.0,
+      "type": "classroom"
+    },
+    {
+      "id": "R13",
+      "code": "R13",
+      "name": "Ruang 13",
+      "building": "C",
+      "floor": 2,
+      "x": -115.0,
+      "z": -32.0,
+      "type": "classroom"
+    },
+    {
+      "id": "LAB_TIK_1",
+      "code": "LAB_TIK_1",
+      "name": "Lab. TIK 1 (Deret Bawah)",
+      "building": "B",
+      "floor": 2,
+      "x": 55.0,
+      "z": -24.0,
+      "type": "lab"
+    },
+    {
+      "id": "LAB_TIK_2",
+      "code": "LAB_TIK_2",
+      "name": "Lab. TIK 2 (Deret Atas)",
+      "building": "B",
+      "floor": 2,
+      "x": 35.0,
+      "z": -24.0,
+      "type": "lab"
+    },
+    {
+      "id": "LAB_RAKITAN",
+      "code": "LAB_RAKITAN",
+      "name": "Lab. Rakitan Komputer",
+      "building": "A",
+      "floor": 2,
+      "x": 35.0,
+      "z": 62.0,
+      "type": "lab"
+    },
+    {
+      "id": "RUANG_PRAKTIK",
+      "code": "RUANG_PRAKTIK",
+      "name": "Ruang Praktik Siswa (RPS)",
+      "building": "A",
+      "floor": 1,
+      "x": -100.0,
+      "z": 50.0,
+      "type": "workshop"
+    },
+    {
+      "id": "RUANG_SENI",
+      "code": "RUANG_SENI",
+      "name": "Ruang Seni & Studio DKV",
+      "building": "A",
+      "floor": 1,
+      "x": 10.0,
+      "z": 70.0,
+      "type": "art"
+    },
+    {
+      "id": "RUANG_IPM",
+      "code": "RUANG_IPM",
+      "name": "Ruang Organisasi IPM / OSIS",
+      "building": "A",
+      "floor": 1,
+      "x": -5.0,
+      "z": 70.0,
+      "type": "org"
+    },
+    {
+      "id": "RUANG_INDUSTRI",
+      "code": "RUANG_INDUSTRI",
+      "name": "Ruang Silber Industries",
+      "building": "A",
+      "floor": 1,
+      "x": 25.0,
+      "z": 70.0,
+      "type": "industry"
+    },
+    {
+      "id": "TAMAN_TENGAH",
+      "code": "TAMAN_TENGAH",
+      "name": "Taman Tengah & Air Mancur",
+      "building": "Luar",
+      "floor": 1,
+      "x": -18.0,
+      "z": 16.0,
+      "type": "garden"
+    },
+    {
+      "id": "PERPUS",
+      "code": "PERPUS",
+      "name": "Perpustakaan",
+      "building": "B",
+      "floor": 1,
+      "x": 8.0,
+      "z": -52.0,
+      "type": "library"
+    },
+    {
+      "id": "BANK_MINI",
+      "code": "BANK_MINI",
+      "name": "Bank Mini",
+      "building": "B",
+      "floor": 1,
+      "x": 46.0,
+      "z": 0.0,
+      "type": "bank"
+    },
+    {
+      "id": "MINI_MARKET",
+      "code": "MINI_MARKET",
+      "name": "Mini Market",
+      "building": "B",
+      "floor": 1,
+      "x": 150.0,
+      "z": 52.0,
+      "type": "market"
+    },
+    {
+      "id": "KANTOR",
+      "code": "KANTOR",
+      "name": "Kantor Guru",
+      "building": "A",
+      "floor": 1,
+      "x": -20.0,
+      "z": 62.0,
+      "type": "office"
+    },
+    {
+      "id": "RUANG_TU",
+      "code": "RUANG_TU",
+      "name": "Ruang Tata Usaha",
+      "building": "A",
+      "floor": 1,
+      "x": -35.0,
+      "z": 62.0,
+      "type": "office"
+    },
+    {
+      "id": "RUANG_BK",
+      "code": "RUANG_BK",
+      "name": "Ruang BK / BKK",
+      "building": "B",
+      "floor": 2,
+      "x": -40.0,
+      "z": -24.0,
+      "type": "office"
+    },
+    {
+      "id": "MUSHOLAH",
+      "code": "MUSHOLAH",
+      "name": "Musholah Sekolah",
+      "building": "D",
+      "floor": 1,
+      "x": -174.0,
+      "z": 16.0,
+      "type": "prayer"
+    },
+    {
+      "id": "LAP_FUTSAL",
+      "code": "LAP_FUTSAL",
+      "name": "Lapangan Futsal",
+      "building": "Luar",
+      "floor": 1,
+      "x": 88.0,
+      "z": 0.0,
+      "type": "sports"
+    },
+    {
+      "id": "PARKIR",
+      "code": "PARKIR",
+      "name": "Parkiran Kendaraan Siswa",
+      "building": "Luar",
+      "floor": 1,
+      "x": 145.0,
+      "z": -55.0,
+      "type": "parking"
+    },
+    {
+      "id": "KANTIN",
+      "code": "KANTIN",
+      "name": "Kantin & Taman Terbuka",
+      "building": "Luar",
+      "floor": 1,
+      "x": -75.0,
+      "z": -75.0,
+      "type": "canteen"
+    }
+  ],
+  "stairs": [
+    {
+      "id": "stairs-b",
+      "name": "Tangga Gedung B",
+      "x": 64.0,
+      "y": 0.0,
+      "z": -12.0,
+      "maxHeight": 14.0
+    },
+    {
+      "id": "stairs-a",
+      "name": "Tangga Gedung A",
+      "x": -45.0,
+      "y": 0.0,
+      "z": 52.0,
+      "maxHeight": 14.0
+    }
+  ],
+  "sports": {
+    "futsal": {
+      "x": 88.0,
+      "y": 0.1,
+      "z": 0.0,
+      "width": 60.0,
+      "depth": 36.0
+    }
+  },
+  "parking": {
+    "student": {
+      "x": 145.0,
+      "z": -55.0,
+      "width": 62.0,
+      "depth": 42.0,
+      "name": "Parkiran Kendaraan Siswa"
+    }
+  },
+  "canteen": {
+    "outdoor": {
+      "x": -75.0,
+      "z": -75.0,
+      "width": 54.0,
+      "depth": 40.0,
+      "name": "Kantin & Taman Terbuka"
+    }
+  },
+  "garden": {
+    "fountain": {
+      "x": -18.0,
+      "y": 1.0,
+      "z": 16.0,
+      "radius": 8.0
+    },
+    "trees": [
+      [
+        -18,
+        -4
+      ],
+      [
+        -35,
+        16
+      ],
+      [
+        5,
+        16
+      ],
+      [
+        -50,
+        30
+      ],
+      [
+        30,
+        45
+      ],
+      [
+        80,
+        45
+      ],
+      [
+        -120,
+        20
+      ],
+      [
+        -80,
+        16
+      ],
+      [
+        130,
+        -25
+      ],
+      [
+        100,
+        58
+      ],
+      [
+        145,
+        15
+      ]
+    ]
+  }
+}

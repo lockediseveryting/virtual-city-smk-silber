@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" shape-rendering="crispEdges">
+  <!-- 32x32 Pixel Art Tang Crimping RJ-45 & Kabel LAN UTP (TJKT) -->
+  <rect width="32" height="32" fill="none" />
+  
+  <!-- Jaws / Head of Crimper (Metal) -->
+  <rect x="11" y="4" width="10" height="7" fill="#334155" />
+  <rect x="13" y="5" width="6" height="5" fill="#64748b" />
+  <rect x="15" y="6" width="2" height="3" fill="#94a3b8" />
+  <rect x="12" y="10" width="8" height="2" fill="#1e293b" />
+
+  <!-- Pivot Pin -->
+  <rect x="15" y="12" width="2" height="2" fill="#0f172a" />
+  <rect x="14" y="11" width="4" height="4" fill="#475569" />
+  <rect x="15" y="12" width="2" height="2" fill="#f8fafc" />
+
+  <!-- Handles (Rubber Coated - Biru TJKT) -->
+  <!-- Left Handle -->
+  <rect x="8" y="15" width="4" height="12" fill="#0284c7" />
+  <rect x="9" y="16" width="2" height="10" fill="#38bdf8" />
+  <rect x="7" y="25" width="5" height="3" fill="#0369a1" />
+
+  <!-- Right Handle -->
+  <rect x="20" y="15" width="4" height="12" fill="#0284c7" />
+  <rect x="21" y="16" width="2" height="10" fill="#38bdf8" />
+  <rect x="20" y="25" width="5" height="3" fill="#0369a1" />
+
+  <!-- RJ-45 Connector Accent (Kuning emas pin) -->
+  <rect x="13" y="3" width="6" height="2" fill="#eab308" />
+</svg>

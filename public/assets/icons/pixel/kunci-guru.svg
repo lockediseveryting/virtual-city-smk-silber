@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" shape-rendering="crispEdges">
+  <!-- 32x32 Pixel Art Kunci Ruang Guru (Golden Key) -->
+  <rect width="32" height="32" fill="none" />
+  <!-- Outline -->
+  <rect x="5" y="5" width="10" height="10" rx="0" fill="#78350f" />
+  <rect x="7" y="7" width="6" height="6" fill="#fef08a" />
+  <rect x="9" y="9" width="2" height="2" fill="#78350f" />
+
+  <!-- Key Shaft -->
+  <rect x="15" y="9" width="13" height="2" fill="#d97706" />
+  <rect x="15" y="9" width="13" height="1" fill="#fde047" />
+
+  <!-- Key Teeth / Bit -->
+  <rect x="22" y="11" width="2" height="4" fill="#b45309" />
+  <rect x="22" y="11" width="1" height="4" fill="#fde047" />
+
+  <rect x="26" y="11" width="2" height="6" fill="#b45309" />
+  <rect x="26" y="11" width="1" height="6" fill="#fde047" />
+  <rect x="25" y="15" width="2" height="2" fill="#d97706" />
+
+  <!-- Sparkle Highlight -->
+  <rect x="7" y="5" width="2" height="1" fill="#ffffff" />
+  <rect x="5" y="7" width="1" height="2" fill="#ffffff" />
+</svg>

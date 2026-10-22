@@ -1,0 +1,16 @@
+# Rahasia & data runtime — jangan pernah di-commit
+.env
+private/config/*.env
+private/config/.setup_done
+private/config/.seed_consumed
+private/data/*
+private/logs/*
+private/uploads/**
+private/backups/*
+!private/**/.gitkeep
+public/assets/avatars/p_*
+public/assets/media/m_*
+*.sqlite
+*.sqlite-*
+*.log
+node_modules/

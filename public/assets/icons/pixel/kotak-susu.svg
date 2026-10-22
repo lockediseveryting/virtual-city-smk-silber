@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" shape-rendering="crispEdges">
+  <!-- 32x32 Pixel Art Kotak Susu Kantin (Milk Carton) -->
+  <rect width="32" height="32" fill="none" />
+  <!-- Straw (Sedotan) -->
+  <rect x="18" y="2" width="2" height="6" fill="#f43f5e" />
+  <rect x="16" y="4" width="2" height="2" fill="#e11d48" />
+
+  <!-- Outline Box -->
+  <rect x="8" y="8" width="16" height="20" fill="#0f172a" />
+  <!-- Milk Carton Top Slant -->
+  <polygon points="8,12 12,8 20,8 24,12" fill="#38bdf8" />
+  <polygon points="12,8 14,8 14,6 12,6" fill="#0284c7" />
+
+  <!-- Carton Body -->
+  <rect x="9" y="12" width="14" height="15" fill="#f8fafc" />
+  <!-- Pink / Strawberry or Blue Milk Label Stripe -->
+  <rect x="9" y="16" width="14" height="7" fill="#f472b6" />
+  <rect x="9" y="18" width="14" height="3" fill="#ec4899" />
+  <!-- Pixel Cow Spot / Label Icon -->
+  <rect x="14" y="19" width="4" height="2" fill="#ffffff" />
+  <rect x="15" y="18" width="2" height="4" fill="#ffffff" />
+  <!-- Shadow Base -->
+  <rect x="9" y="26" width="14" height="1" fill="#cbd5e1" />
+</svg>

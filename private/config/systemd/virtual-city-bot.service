@@ -1,0 +1,24 @@
+[Unit]
+# Use this ONLY when you run the bot in long-polling mode.
+# If you configure a webhook (/tg/webhook), do NOT enable this unit — the webhook
+# route handles updates and a second poller would fight over getUpdates.
+Description=Virtual City SMK Silber — Telegram Bot (long polling)
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www
+ExecStart=/usr/bin/php /var/www/private/bin/telegram_bot.php
+Restart=always
+RestartSec=5
+
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
